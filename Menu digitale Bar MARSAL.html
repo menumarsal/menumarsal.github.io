@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- =========================================================
+       SEO DI BASE
+       Se cambi nome, città o dominio, aggiornali anche qui.
+       ========================================================= -->
+  <title>mar.sal. – Cocktail lounge e caffetteria al Borgo Marinari, Napoli</title>
+  <meta name="description" content="Il menu di mar.sal., cocktail lounge e caffetteria al Borgo Marinari di Napoli: cocktail, gin tonic, birre artigianali napoletane, vini, distillati, cucina, caffetteria e gelateria.">
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="format-detection" content="telephone=no">
+  <!-- Quando il sito è online, togli il commento a canonical e og:url (più sotto)
+       e inserisci l'indirizzo definitivo -->
+  <!-- <link rel="canonical" href="https://www.tuodominio.it/"> -->
+
+  <!-- Open Graph: anteprima quando il link viene condiviso (WhatsApp, Facebook, ecc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="mar.sal.">
+  <meta property="og:title" content="mar.sal. – Il menu">
+  <meta property="og:description" content="Cocktail, caffè e aperitivi al Borgo Marinari, ai piedi di Castel dell’Ovo.">
+  <!-- <meta property="og:url" content="https://www.tuodominio.it/"> -->
+  <!-- Facoltativo: immagine di anteprima 1200×630 px caricata sul TUO sito (indirizzo completo) -->
+  <!-- <meta property="og:image" content="https://www.tuodominio.it/anteprima.jpg"> -->
+  <meta name="twitter:card" content="summary">
+
+  <!-- Icona della scheda: lo script la sostituisce con il logo -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Crect%20width='48'%20height='48'%20rx='10'%20fill='%23062A74'/%3E%3C/svg%3E">
+
+  <!-- =========================================================
+       SCHERMATA DI BENVENUTO (scelta della lingua)
+       Questo script decide subito, prima che la pagina compaia, se mostrarla:
+       - sì a ogni nuova apertura della pagina (es. scansione del QR code);
+       - no se il cliente ricarica la pagina o torna indietro,
+         a meno che non abbia ancora scelto la lingua.
+       Il QR code resta lo stesso: non servono indirizzi diversi.
+       ========================================================= -->
+  <script>
+    (function () {
+      var tipo = 'navigate';
+      try {
+        var aperture = performance.getEntriesByType('navigation');
+        if (aperture.length) tipo = aperture[0].type;            // 'navigate', 'reload' o 'back_forward'
+        else if (performance.navigation && performance.navigation.type === 1) tipo = 'reload';
+      } catch (e) { /* browser molto vecchio: la schermata compare */ }
+      var nuovaApertura = tipo === 'navigate' && !document.wasDiscarded;
+      var linguaScelta = true;
+      try { linguaScelta = sessionStorage.getItem('marsal-benvenuto') === 'fatto'; } catch (e) { /* memoria non disponibile */ }
+      if (nuovaApertura || !linguaScelta) {
+        document.documentElement.classList.add('mostra-benvenuto');
+        // barra del browser blu notte come la copertina (poi torna bianca)
+        var tema = document.querySelector('meta[name="theme-color"]');
+        if (tema) { tema.setAttribute('data-colore-pagina', tema.getAttribute('content')); tema.setAttribute('content', '#031B4A'); }
+      }
+    })();
+  </script>
+
+  <style>
+    /* =========================================================
+       1. VARIABILI: colori, caratteri e misure
+       Fondo bianco, testi e linee nel blu del logo di mar.sal.
+       Per cambiare il blu in tutta la pagina (icona della scheda
+       compresa) basta modificare --blu-rgb.
+       ========================================================= */
+
+    /* Carattere del marchio: Bodoni Moda, incorporato nella pagina (nessun download
+       in più), solo lettere latine, peso normale, contrasto che si adatta alla grandezza
+       del testo. Serve per "mar.sal." e per la copertina: così è uguale su ogni telefono
+       (su Android il Didot non c'è).
+       Copyright 2020 The Bodoni Moda Project Authors (github.com/indestructible-type/Bodoni),
+       licenza SIL Open Font License 1.1 (openfontlicense.org). */
+    @font-face {
+      font-family: "Bodoni mar.sal.";
+      src: url("data:font/woff2;base64,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") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --blu-rgb: 6, 42, 116;                        /* blu del logo #062A74, scritto come R, G, B */
+      --sfondo-rgb: 255, 255, 255;                  /* bianco */
+
+      --sfondo: rgb(var(--sfondo-rgb));             /* sfondo della pagina */
+      --superficie: #F1F5FC;                        /* superfici in rilievo: azzurro chiarissimo */
+      --testo: rgb(var(--blu-rgb));                 /* testi principali */
+      --testo-tenue: #3E5A96;                       /* testi secondari, allergeni, "terminato per oggi" */
+      --accento: rgb(var(--blu-rgb));               /* prezzi, pulsanti, icone, filetti */
+      --evidenza: #2F5BB7;                          /* "Novità", "vegano", "senza glutine", conferme */
+      --linea: rgba(var(--blu-rgb), .14);           /* linee sottili */
+      --linea-marcata: rgba(var(--blu-rgb), .4);    /* linee più marcate */
+
+      /* Caratteri di sistema: nessun download, pagina più veloce.
+         Per un font web, aggiungi @font-face e mettilo in testa alla lista. */
+      --font-titoli: "Didot", "Bodoni 72", "Bodoni MT", "Bodoni Moda", "Playfair Display", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --font-marchio: "Bodoni mar.sal.", var(--font-titoli);
+      --font-testo: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+      --contenuto: 1120px;
+      --margine: clamp(1.1rem, 5vw, 2.25rem);
+      /* Margini laterali che rispettano anche la "tacca" (notch) dei telefoni in orizzontale */
+      --lato-sx: max(var(--margine), env(safe-area-inset-left));
+      --lato-dx: max(var(--margine), env(safe-area-inset-right));
+
+      /* Aggiornata dal JavaScript in base all'altezza reale della testata */
+      --h-testata: 63px;
+    }
+
+    /* =========================================================
+       2. BASE
+       ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    /* Lo scorrimento fluido verso le sezioni lo gestisce lo script, che rispetta
+       l'impostazione "riduci movimento" del telefono: niente scroll-behavior qui,
+       così i link diretti (es. da QR code) arrivano subito alla sezione. */
+    html {
+      font-size: 106.25%; /* 17px: testi grandi e leggibili */
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      background: var(--sfondo);
+    }
+
+    body {
+      margin: 0;
+      background: var(--sfondo);
+      color: var(--testo);
+      font-family: var(--font-testo);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-wrap: break-word; /* le parole molto lunghe vanno a capo invece di uscire dallo schermo */
+    }
+    ::selection { background: var(--accento); color: var(--sfondo); }
+
+    h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
+    ul { padding: 0; list-style: none; }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; }
+
+    .contenitore {
+      width: 100%;
+      max-width: var(--contenuto);
+      margin-inline: auto;
+      padding-left: var(--lato-sx);
+      padding-right: var(--lato-dx);
+    }
+
+    /* Testo leggibile solo dai lettori di schermo */
+    .sr-only {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Focus ben visibile per chi naviga da tastiera */
+    :focus-visible { outline: 2px solid var(--accento); outline-offset: 3px; }
+    [tabindex="-1"]:focus { outline: none; }
+
+    /* Sprite delle icone in cima al body: non occupa spazio */
+    .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+    /* Icone SVG (definite una sola volta nello sprite e richiamate con <use>) */
+    .icona {
+      width: 1.2em; height: 1.2em;
+      flex: none;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Link "Vai al menu" per tastiera e lettori di schermo */
+    .salta {
+      position: absolute;
+      left: 1rem; top: -200px;
+      z-index: 100;
+      padding: .75rem 1.1rem;
+      background: var(--accento);
+      color: var(--sfondo);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .salta:focus { top: 1rem; }
+
+    /* =========================================================
+       3. PULSANTI
+       ========================================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      min-height: 46px;
+      padding: 0 1.25rem;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      background: transparent;
+      font-size: .95rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      line-height: 1.1;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    /* =========================================================
+       4. TESTATA: lingua (mappamondo) a sinistra, logo al centro,
+       indice (tre linee) a destra. Resta fissa in alto mentre scorri.
+       Compatta sul telefono, più grande da tablet e computer.
+       ========================================================= */
+    .testata {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(var(--sfondo-rgb), .95);
+      -webkit-backdrop-filter: saturate(1.3) blur(12px);
+      backdrop-filter: saturate(1.3) blur(12px);
+    }
+    .testata-interno {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); /* il logo resta sempre al centro */
+      align-items: center;
+      gap: .75rem;
+      min-height: 60px;
+      padding-block: .3rem;
+    }
+    .lingue { position: relative; justify-self: start; }
+
+    .marchio {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .15rem;
+      justify-self: center;
+      padding: .1rem .35rem;
+      text-decoration: none;
+      color: var(--testo);          /* colore del logo */
+      transition: color .2s ease;
+    }
+    .marchio-nome {                 /* "mar.sal." sotto il logo, come nel piè di pagina */
+      font-family: var(--font-marchio);
+      font-size: 1rem;
+      line-height: 1;
+      letter-spacing: .02em;
+    }
+    .logo-marchio {
+      display: block;
+      height: 30px;
+      width: auto;
+      aspect-ratio: 830 / 411;
+      overflow: visible;
+      stroke-width: 7;              /* ispessisce i tratti sottili quando il logo è piccolo */
+    }
+
+    /* Pulsante lingua (mappamondo) e menu delle lingue */
+    .btn-lingua { gap: .45rem; min-height: 44px; padding: 0 .5rem; color: var(--testo); }
+    .lingua-codice { font-size: .88rem; font-weight: 600; letter-spacing: .08em; }
+    .menu-lingue {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      z-index: 50;
+      min-width: 210px;
+      padding: .35rem;
+      background: var(--sfondo);
+      border: 1px solid var(--linea-marcata);
+      box-shadow: 0 12px 32px rgba(var(--blu-rgb), .14);
+    }
+    .menu-lingue button {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      width: 100%;
+      min-height: 46px;
+      padding: 0 .8rem;
+      border: 0;
+      background: none;
+      color: var(--testo);
+      font-size: 1.02rem;
+      text-align: left;
+      cursor: pointer;
+    }
+    .menu-lingue button:focus-visible { background: var(--superficie); }
+    .menu-lingue button[aria-checked="true"] { font-weight: 700; }
+    .menu-lingue button[aria-checked="true"]::after { content: "✓"; margin-left: auto; }
+    .lingua-sigla { width: 1.7rem; font-size: .8rem; letter-spacing: .08em; color: var(--testo-tenue); }
+
+    /* Pulsante dell'indice (tre linee) a destra: diventa una X quando l'indice è aperto */
+    .btn-indice { justify-self: end; min-width: 44px; min-height: 44px; padding: 0 .4rem; color: var(--testo); }
+    .btn-indice .icona { width: 1.6em; height: 1.6em; }
+    .btn-indice[aria-expanded="true"] .icona-apri,
+    .btn-indice[aria-expanded="false"] .icona-chiudi { display: none; }
+
+    /* Con l'indice aperto la testata è bianca piena, come il pannello */
+    .testata.con-indice { background: var(--sfondo); }
+
+    /* Pannello dell'indice: si apre sotto la testata, a tutta larghezza */
+    .indice {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      max-height: calc(100vh - var(--h-testata));
+      max-height: calc(100dvh - var(--h-testata));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding-block: .25rem 1.25rem;
+      background: var(--sfondo);
+      border-top: 1px solid var(--linea);
+      box-shadow: 0 26px 26px -14px rgba(var(--blu-rgb), .2); /* ombra solo verso il basso */
+    }
+    /* Una colonna sul telefono, più colonne su schermi larghi */
+    .indice-lista {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+      column-gap: 2.5rem;
+    }
+    .voce-indice {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: 100%;
+      min-height: 54px;
+      padding: .4rem 0;
+      border: 0;
+      border-bottom: 1px solid var(--linea);
+      background: none;
+      color: var(--testo);
+      font-family: var(--font-titoli);
+      font-size: 1.4rem;
+      line-height: 1.2;
+      text-align: left;
+      cursor: pointer;
+    }
+    .voce-indice[aria-pressed="true"] { font-style: italic; }
+    .voce-indice[aria-pressed="true"]::after { content: "✓"; font-family: var(--font-testo); font-style: normal; font-size: 1rem; }
+
+    /* Velo sulla pagina mentre l'indice è aperto: toccandolo l'indice si chiude */
+    .velo {
+      position: fixed;
+      inset: 0;
+      z-index: 25;           /* sotto la testata (30), sopra il menu */
+      background: rgba(var(--blu-rgb), .2);
+      touch-action: none;    /* la pagina sotto non scorre per sbaglio */
+    }
+
+    /* Testata più grande su tablet e computer (non sui telefoni in orizzontale, troppo bassi) */
+    @media (min-width: 540px) and (min-height: 600px) {
+      .testata-interno { min-height: 80px; padding-block: .4rem; }
+      .marchio { gap: .2rem; padding: .15rem .35rem; }
+      .logo-marchio { height: 50px; stroke-width: 4; }
+      .marchio-nome { font-size: 1.35rem; }
+      .btn-lingua, .btn-indice { min-height: 46px; }
+    }
+
+    /* =========================================================
+       5. MENU: titolo
+       ========================================================= */
+    .menu {
+      padding-block: clamp(1.25rem, 5vw, 3.5rem) clamp(3rem, 8vw, 6rem);
+      scroll-margin-top: var(--h-testata);
+    }
+    .menu-intro { text-align: center; }
+    .menu-titolo {
+      font-family: var(--font-titoli);
+      font-weight: 400;
+      font-size: clamp(2.2rem, 8vw, 3.6rem);
+      line-height: 1.05;
+    }
+    /* Parte di menu scelta dall'indice, sotto il titolo: toccandola si torna a tutto il menu */
+    .filtro-attivo {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      min-height: 44px;
+      margin-top: .8rem;
+      padding: 0 .9rem 0 1.15rem;
+      border: 1px solid var(--linea-marcata);
+      border-radius: 999px;
+      background: var(--superficie);
+      color: var(--accento);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+      cursor: pointer;
+    }
+    .filtro-attivo .icona { width: 1.05em; height: 1.05em; stroke-width: 2; }
+
+    /* =========================================================
+       6. SEZIONI E VOCI DEL MENU
+       ========================================================= */
+    /* Parti del menu (bar, poi cucina e caffetteria): solo un contenitore, senza titolo */
+    .parte { scroll-margin-top: calc(var(--h-testata) + .5rem); }
+
+    /* Sezioni (la prima non ha titolo: le sue voci seguono subito "Il menu") */
+    .sezione {
+      margin-top: clamp(2.25rem, 7vw, 4rem);
+      scroll-margin-top: calc(var(--h-testata) + .5rem);
+    }
+    .sezione-testa {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .45rem;
+      margin-bottom: .75rem;
+      text-align: center;
+    }
+    /* Foto facoltativa di una sezione, con cornice ad arco (campo "immagine" in CATEGORIE) */
+    .vignetta {
+      position: relative;
+      width: 72px;
+      aspect-ratio: 4 / 5;
+      margin-bottom: .4rem;
+      overflow: hidden;
+      border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+      background: linear-gradient(170deg, var(--sfondo), #E3EAF7);
+      box-shadow: 0 0 0 1px var(--accento);
+    }
+    .vignetta::after {
+      content: "";
+      position: absolute;
+      inset: 4px 4px 0;
+      border: 1px solid rgba(var(--blu-rgb), .45);
+      border-bottom: 0;
+      border-radius: inherit;
+    }
+    .vignetta img { width: 100%; height: 100%; object-fit: cover; }
+    .sezione-titolo {
+      font-family: var(--font-titoli);
+      font-weight: 400;
+      font-size: clamp(1.9rem, 6.5vw, 2.5rem);
+      line-height: 1.1;
+    }
+    .sezione-nota {
+      max-width: 32em;
+      font-family: var(--font-titoli);
+      font-style: italic;
+      font-size: 1.08rem;
+      color: var(--testo-tenue);
+    }
+    .sezione-nota-finale { margin: 1.5rem auto 0; text-align: center; }
+
+    /* Gruppi dentro una sezione (es. Vini Bianchi, Whisky) */
+    .gruppo { margin-top: 1.9rem; }
+    .gruppo-titolo {
+      margin-bottom: .2rem;
+      text-align: center;
+      font-family: var(--font-titoli);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.45rem;
+      color: var(--accento);
+    }
+
+    /* Una colonna sul telefono, due da 860px in su */
+    .prodotti { display: grid; }
+    @media (min-width: 860px) {
+      .prodotti { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3.5rem; }
+    }
+
+    .prodotto {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+      align-items: start;
+      padding-block: clamp(1rem, 3vw, 1.2rem);   /* lo spazio bianco separa un prodotto dall'altro */
+    }
+    .prodotto.compatta { padding-block: .8rem; }
+    .prodotto.in-grassetto .prodotto-nome { font-weight: 700; }
+    /* Con una foto: miniatura ad arco a sinistra */
+    .prodotto.con-foto { grid-template-columns: 64px minmax(0, 1fr); }
+    .foto {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+      box-shadow: 0 0 0 1px var(--linea-marcata);
+    }
+    .foto img { width: 100%; height: 100%; object-fit: cover; }
+
+    .badges { display: flex; flex-wrap: wrap; gap: .25rem 1rem; margin-bottom: .1rem; }
+    .badge {
+      font-family: var(--font-titoli);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--accento);
+    }
+    .badge-novita { color: var(--evidenza); }
+    .badge-esaurito { color: var(--testo-tenue); }
+
+    .prodotto-riga {
+      display: flex;
+      align-items: baseline;
+      gap: .6rem;
+    }
+    .prodotto-nome {
+      font-family: var(--font-titoli);
+      font-size: 1.32rem;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+    /* Puntini di guida tra nome e prezzo, come nelle carte stampate */
+    .puntini {
+      flex: 1 1 1.5rem;
+      min-width: 1.5rem;
+      border-bottom: 1px dotted rgba(var(--blu-rgb), .55);
+      transform: translateY(-.3em);
+    }
+    .prezzo {
+      flex: none;
+      color: var(--accento);
+      font-size: 1.08rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .dettaglio {
+      margin-left: .4rem;
+      font-family: var(--font-testo);
+      font-size: .86rem;
+      letter-spacing: .02em;
+      color: var(--testo-tenue);
+      white-space: nowrap;
+    }
+    .descrizione { margin-top: .3rem; max-width: 36em; color: var(--testo-tenue); }
+
+    .varianti { margin-top: .55rem; max-width: 26em; }
+    .varianti li { display: flex; align-items: baseline; gap: .6rem; padding: .15rem 0; color: var(--testo-tenue); }
+    .varianti .prezzo { font-size: 1.02rem; }
+
+    .nota {
+      margin-top: .35rem;
+      font-family: var(--font-titoli);
+      font-style: italic;
+      font-size: 1.02rem;
+      color: var(--testo-tenue);
+    }
+
+    /* Etichette (allergeni e note) sotto le voci e nella legenda */
+    .tag { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
+    .tag li, .legenda li {
+      padding: .08rem .65rem;
+      border: 1px solid;
+      border-radius: 999px;
+      font-size: .82rem;
+      letter-spacing: .02em;
+      line-height: 1.5;
+    }
+    .tag .tag-scelta, .legenda .tag-scelta { color: var(--evidenza); border-color: rgba(var(--blu-rgb), .45); }
+    .tag .tag-allergene, .legenda .tag-allergene { color: var(--testo-tenue); border-color: rgba(var(--blu-rgb), .4); }
+
+    /* Prodotto terminato */
+    .prodotto.esaurito .prodotto-nome,
+    .prodotto.esaurito .prezzo,
+    .prodotto.esaurito .descrizione { opacity: .55; }
+
+    /* Messaggio per chi ha JavaScript disattivato */
+    .avviso {
+      max-width: 640px;
+      margin: 2.25rem auto 0;
+      padding: 2.25rem 1.25rem;
+      border: 1px solid var(--linea-marcata);
+      text-align: center;
+    }
+
+    /* =========================================================
+       7. INFORMAZIONI UTILI (allergeni e note sui prezzi)
+       ========================================================= */
+    .info {
+      background: var(--sfondo);
+      border-top: 1px solid var(--linea-marcata);
+      padding-block: clamp(2.5rem, 8vw, 5rem);
+    }
+    .info-titolo {
+      font-family: var(--font-titoli);
+      font-weight: 400;
+      font-size: clamp(2.2rem, 7vw, 3rem);
+      line-height: 1.1;
+      text-align: center;
+    }
+    .info-blocco {
+      max-width: 46rem;
+      margin: clamp(1.25rem, 5vw, 2rem) auto 0;
+      padding: clamp(1.1rem, 4vw, 1.5rem);
+      border: 1px solid var(--linea-marcata);
+    }
+    .info-blocco h3 {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-family: var(--font-titoli);
+      font-size: 1.45rem;
+      font-weight: 400;
+    }
+    .info-blocco h3 .icona { color: var(--accento); }
+    .info-blocco p { color: var(--testo-tenue); }
+    .info-blocco h3 + p { margin-top: .8rem; }
+
+    /* Rete e password: il valore sta accanto all'etichetta; se non c'è spazio
+       va sotto, intero, invece di spezzarsi a metà parola */
+
+    .legenda-intro { margin-top: 1rem; }
+    .legenda { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .65rem; }
+
+    .info details { margin-top: 1.2rem; padding-top: .5rem; border-top: 1px solid var(--linea); }
+    .info summary { display: flex; align-items: center; min-height: 44px; font-weight: 600; cursor: pointer; }
+    .lista-allergeni { columns: 2; column-gap: 1.5rem; margin-top: .4rem; color: var(--testo-tenue); }
+    .lista-allergeni li { padding: .2rem 0; break-inside: avoid; }
+    @media (max-width: 359px) {
+      .lista-allergeni { columns: 1; } /* telefoni molto stretti: una sola colonna */
+    }
+
+    .nota-prezzi {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--linea);
+      color: var(--testo-tenue);
+      text-align: center;
+    }
+
+    /* =========================================================
+       8. PIÈ DI PAGINA E "TORNA SU"
+       ========================================================= */
+    .piede {
+      background: var(--sfondo);
+      border-top: 1px solid var(--linea-marcata);
+      color: var(--testo-tenue);
+      padding-block: 2.75rem calc(2.5rem + env(safe-area-inset-bottom));
+      text-align: center;
+      font-size: .95rem;
+    }
+    .piede-interno { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+    .piede .logo-marchio { height: 40px; stroke-width: 7; color: var(--accento); }
+    .piede-nome { font-family: var(--font-marchio); font-size: 1.8rem; color: var(--testo); line-height: 1; }
+
+    .torna-su {
+      position: fixed;
+      right: max(1rem, env(safe-area-inset-right));
+      bottom: max(1rem, env(safe-area-inset-bottom));
+      z-index: 40;
+      display: grid;
+      place-items: center;
+      width: 50px; height: 50px;
+      border: 1px solid var(--accento);
+      border-radius: 50%;
+      background: var(--superficie);
+      color: var(--testo);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity .2s ease, transform .2s ease, visibility .2s;
+    }
+    .torna-su.visibile { opacity: 1; visibility: visible; transform: none; }
+
+    /* =========================================================
+       9. SCHERMATA DI BENVENUTO: la "copertina" del menu
+       Un mare di notte al Borgo Marinari: la barca del logo poggia
+       sull'orizzonte e si riflette nell'acqua; le lingue sono nel mare.
+       Compare solo se lo script nel <head> mette la classe
+       "mostra-benvenuto" su <html> (nuova apertura, es. scansione del QR).
+       ========================================================= */
+    .benvenuto { display: none; }
+    .mostra-benvenuto,
+    .mostra-benvenuto body { overflow: hidden; }   /* la pagina sotto resta ferma */
+    .mostra-benvenuto .benvenuto {
+      --notte: #031B4A;                       /* cielo notturno */
+      --bagliore: #15438F;                    /* luce della città sull'orizzonte */
+      --mare: #062A74;                        /* il mare: il blu del logo */
+      --fondale: #03194A;                     /* il mare più in basso */
+      --barca: clamp(64px, 11.5vh, 104px);    /* altezza della barca (il logo) */
+
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      padding: max(1.5rem, env(safe-area-inset-top)) var(--lato-dx) max(1.5rem, env(safe-area-inset-bottom)) var(--lato-sx);
+      overflow-x: hidden;
+      overflow-y: auto;                       /* su schermi molto bassi si può scorrere */
+      overscroll-behavior: contain;
+      background: linear-gradient(to bottom, var(--mare) 45%, var(--fondale));
+      color: #fff;
+      text-align: center;
+      transition: opacity .45s ease;
+    }
+    .benvenuto.in-uscita { opacity: 0; }     /* breve dissolvenza dopo la scelta */
+    .benvenuto-interno {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin: auto;                           /* al centro dello schermo */
+    }
+    .benvenuto-nome {
+      margin-bottom: clamp(1.25rem, 4.5vh, 2.25rem);
+      font-family: var(--font-marchio);
+      font-size: clamp(2.6rem, 12vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: .015em;
+    }
+
+    /* Orizzonte: la barca sopra, il riflesso sotto.
+       Il cielo e la linea dell'orizzonte si allargano a tutto lo schermo. */
+    .benvenuto-orizzonte { position: relative; }
+    .benvenuto-orizzonte::after {             /* il cielo, dall'orizzonte in su */
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 50%;
+      bottom: calc(100% - var(--barca));
+      width: 200vw;
+      height: 200vh;
+      transform: translateX(-50%);
+      background: linear-gradient(to top, var(--bagliore), var(--mare) 16vh, var(--notte) 42vh);
+    }
+    .benvenuto-orizzonte::before {            /* la linea dell'orizzonte */
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: var(--barca);
+      width: 100vw;
+      height: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, .55) 22%, rgba(255, 255, 255, .55) 78%, transparent);
+      box-shadow: 0 0 14px 1px rgba(140, 180, 255, .35);
+    }
+    .benvenuto-barca,
+    .benvenuto-riflesso {
+      display: block;
+      width: calc(var(--barca) * 830 / 411);
+      margin-inline: auto;
+    }
+    .benvenuto-barca { height: var(--barca); overflow: visible; stroke-width: 4; transform-origin: 50% 100%; }
+    .benvenuto-riflesso {
+      height: calc(var(--barca) * .62);
+      opacity: .45;
+      transform-origin: 50% 0;
+      -webkit-mask-image: linear-gradient(to bottom, #000 15%, transparent 95%);
+      mask-image: linear-gradient(to bottom, #000 15%, transparent 95%);
+    }
+    .benvenuto-riflesso svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      stroke-width: 4;
+      transform: scaleY(-1);
+      /* l'acqua spezza il riflesso in righe orizzontali */
+      -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 2px, transparent 2px 5px);
+      mask-image: repeating-linear-gradient(to bottom, #000 0 2px, transparent 2px 5px);
+    }
+
+    /* Le lingue, nel mare */
+    .benvenuto-lingue { display: grid; width: min(100%, 18rem); margin-top: clamp(.75rem, 3vh, 1.75rem); }
+    .benvenuto-lingua {
+      position: relative;
+      width: 100%;
+      min-height: 54px;
+      padding: .3rem 1rem .6rem;
+      border: 0;
+      background: none;
+      color: #fff;
+      font-family: var(--font-marchio);
+      font-size: 1.6rem;
+      line-height: 1.2;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* sotto ogni lingua un filo di luce sull'acqua, che si allunga al tocco */
+    .benvenuto-lingua::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: .45rem;
+      width: 2.4rem;
+      height: 1px;
+      background: currentColor;
+      opacity: .3;
+      transform: translateX(-50%) scaleX(.5);
+      transition: transform .35s ease, opacity .35s ease;
+    }
+    .benvenuto-lingua:active::after,
+    .benvenuto-lingua.scelta::after { opacity: 1; transform: translateX(-50%) scaleX(2.6); }
+    .benvenuto-lingua:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+
+    /* Telefono in orizzontale: tutto più compatto, lingue su una riga */
+    @media (orientation: landscape) and (max-height: 500px) {
+      .mostra-benvenuto .benvenuto { --barca: 50px; }
+      .benvenuto-nome { margin-bottom: .75rem; font-size: 2.1rem; }
+      .benvenuto-lingue { display: flex; flex-wrap: wrap; justify-content: center; width: min(100%, 46rem); margin-top: .25rem; }
+      .benvenuto-lingua { min-height: 48px; font-size: 1.35rem; }
+    }
+
+    /* =========================================================
+       10. EFFETTI AL PASSAGGIO DEL MOUSE
+       Solo dove c'è un mouse: sul telefono resterebbero "accesi" dopo il tocco.
+       ========================================================= */
+    @media (hover: hover) {
+      .marchio:hover,
+      .btn-lingua:hover,
+      .btn-indice:hover,
+      .voce-indice:hover { color: var(--testo-tenue); }
+      .menu-lingue button:hover { background: var(--superficie); }
+      .filtro-attivo:hover { border-color: var(--accento); }
+      .benvenuto-lingua:hover::after { opacity: .9; transform: translateX(-50%) scaleX(2); }
+    }
+
+    /* =========================================================
+       11. ANIMAZIONI LEGGERE (disattivate se il telefono chiede "riduci movimento")
+       ========================================================= */
+    @media (prefers-reduced-motion: no-preference) {
+      .aggiorna { animation: aggiorna .3s ease-out; }
+      .indice { animation: scendi .2s ease-out; }
+      .velo { animation: compari .2s ease-out; }
+      /* copertina: un solo momento all'apertura, poi solo la barca che dondola */
+      .benvenuto-nome { animation: affiora .7s ease-out both; }
+      .benvenuto-orizzonte::before { animation: orizzonte 1s cubic-bezier(.2, .7, .2, 1) .1s both; }
+      .benvenuto-barca { animation: compare .7s ease-out .25s both, dondola 7s ease-in-out 1.1s infinite; }
+      .benvenuto-riflesso { animation: compare .7s ease-out .35s both, dondola-riflesso 7s ease-in-out 1.1s infinite; }
+      .benvenuto-riflesso svg { animation: increspa 3s linear infinite; }
+      .benvenuto-lingue { animation: affiora .6s ease-out .35s both; }   /* le lingue arrivano presto: sono l'azione */
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .benvenuto { transition: none; }
+    }
+    @keyframes affiora { from { opacity: 0; transform: translateY(10px); } }
+    @keyframes compare { from { opacity: 0; } }
+    @keyframes orizzonte { from { transform: translateX(-50%) scaleX(0); } }
+    @keyframes dondola {
+      0%, 100% { transform: none; }
+      25% { transform: translateY(-1px) rotate(-1deg); }
+      75% { transform: translateY(1px) rotate(1deg); }
+    }
+    @keyframes dondola-riflesso {          /* specchio del dondolio della barca */
+      0%, 100% { transform: none; }
+      25% { transform: translateY(1px) rotate(1deg); }
+      75% { transform: translateY(-1px) rotate(-1deg); }
+    }
+    @keyframes increspa { to { -webkit-mask-position: 0 5px; mask-position: 0 5px; } }
+    @keyframes aggiorna { from { opacity: .2; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    @keyframes scendi { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+    @keyframes compari { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Stampa: solo il menu, su fondo bianco */
+    @media print {
+      .testata .btn, .indice, .velo, .filtro-attivo, .torna-su, .salta, .benvenuto { display: none !important; }
+      html, body { overflow: visible !important; }
+      .testata { position: static; }
+      html, body, .menu, .info, .piede { background: #fff !important; color: #000 !important; }
+      .prodotto { break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =========================================================
+       SPRITE DELLE ICONE: ogni icona è definita una volta e
+       richiamata con <use href="#i-nome">
+       ========================================================= -->
+  <svg class="sprite" width="0" height="0" aria-hidden="true">
+    <!-- icone dell'interfaccia -->
+    <symbol id="i-mondo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M3.4 12h17.2M12 3.4c2.3 2.4 3.5 5.3 3.5 8.6s-1.2 6.2-3.5 8.6c-2.3-2.4-3.5-5.3-3.5-8.6S9.7 5.8 12 3.4Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-chiudi" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-su" viewBox="0 0 24 24"><path d="M12 19V5.5M6 11.5l6-6 6 6"/></symbol>
+    <!-- LOGO di mar.sal. (vettoriale): usato in testata, piè di pagina e icona della scheda -->
+    <symbol id="i-logo" viewBox="0 0 830 411"><path fill="currentColor" stroke="currentColor" stroke-linejoin="round" fill-rule="evenodd" d="M203 408.2C202.1 407.9 201.3 407.4 200.7 406.8C200.2 406.2 199.4 405.6 198.8 405.3C198.3 405 197.7 404.6 197.4 404.2C197.1 403.9 196 403.1 195 402.3C194 401.5 191.4 399.2 189.3 397.2C182.3 390.6 180.7 389.2 179.9 388.7C178.9 388.1 175.5 384.9 170.3 379.9C165.6 375.4 160.8 371.2 158.1 369.4C157.1 368.7 155.2 367.1 153.8 365.9C152.5 364.6 151 363.3 150.5 363C150 362.7 147.3 360 144.4 357.1C141.5 354.2 138.4 351.3 137.5 350.6C136.6 349.9 135.2 348.7 134.4 347.9C133.6 347.2 131.7 345.5 130.2 344.2C128.8 342.9 126.6 340.8 125.2 339.5C123.9 338.2 122.1 336.5 121.2 335.8C120.3 335.1 119.4 334.3 119.3 334.2C119.2 334 118.2 333.1 117.1 332.1C116 331.2 113.6 328.9 111.8 327C109.9 325.2 107.6 323.1 106.8 322.4C105.9 321.6 104.3 320.3 103.4 319.5C102.4 318.7 101.1 317.6 100.5 317.2C99.9 316.7 97.1 314.2 94.4 311.5C89.5 306.7 85.3 302.8 79.9 298.1C77.4 296 74 292.7 68.1 286.8C66.5 285.3 64.8 283.7 64.2 283.3C63.6 283 62.1 281.7 60.9 280.6C59.6 279.4 57.6 277.5 56.4 276.4C54.1 274.3 52.6 273 49 269.9C47.9 268.9 46.4 267.6 45.9 266.9C45.3 266.2 43.5 264.5 42 263.1C40.4 261.7 38.3 259.8 37.2 258.9C34.6 256.4 32.5 254.7 31.6 254.1C31.2 253.9 30.4 253.1 29.7 252.5C28.5 251.3 26.3 249.4 21.4 245.3C15.7 240.6 8.1 232.7 6.8 230C6.5 229.4 5.8 228.2 5.2 227.3C3.3 224.1 1.8 218.3 2.2 215.1C2.5 212.7 3.6 208.5 4.3 207C5.5 204.7 12.1 200.5 18.5 198.1C19.5 197.7 20.7 197.2 21 197C21.3 196.8 22.2 196.3 23 195.9C23.8 195.5 25.2 194.7 26.2 194.1C27.2 193.4 29.1 192.5 30.3 192C31.6 191.5 33.6 190.5 34.9 189.8C36.1 189.1 37.2 188.5 37.3 188.5C37.4 188.5 38.8 187.9 40.2 187.2C41.7 186.5 44.1 185.7 45.4 185.4C46.8 185 48.9 184.4 50.2 183.9C51.6 183.4 53.5 182.9 54.6 182.8C55.6 182.6 57.4 182.4 58.4 182.2C59.5 182.1 61 181.7 61.9 181.3C64.6 180.2 66.9 179.5 69.7 179.1C71.2 178.9 73.7 178.3 75.4 177.9C77 177.4 78.8 177 79.2 176.9C79.7 176.8 80.8 176.5 81.7 176.2C82.5 176 84 175.7 85 175.6C87.4 175.4 90.2 174.9 93.2 174.1C96.5 173.2 99.4 172.7 104.7 172C105.7 171.9 107.8 171.4 109.3 170.9C112.3 170 116.6 169.2 120.6 168.8C122 168.6 124.4 168.3 125.9 168C127.4 167.7 129.9 167.3 131.4 167C132.9 166.7 134.5 166.4 134.9 166.3C135.3 166.1 137.1 165.8 139 165.6C140.9 165.4 144.5 164.8 147.1 164.2C149.7 163.7 153.2 163.1 154.9 162.9C156.5 162.7 158.6 162.4 159.5 162.3C160.4 162.2 163.2 161.7 165.6 161.2C170.2 160.3 172.1 160 180.2 158.9C182.8 158.5 186.1 158 187.5 157.8C188.9 157.5 192.3 157 195 156.6C197.7 156.3 201.7 155.7 203.9 155.3C206.1 155 208.9 154.6 210.3 154.4C211.6 154.2 212.9 153.9 213.3 153.8C213.6 153.6 215.1 153.4 216.5 153.3C222.5 152.6 225.3 152.2 228.9 151.5C230.9 151.1 232.7 150.7 232.7 150.6C232.8 150.6 234.1 150.4 235.5 150.3C236.9 150.1 239.4 149.8 240.9 149.5C242.4 149.3 244.6 148.9 245.8 148.8C246.9 148.6 249.5 148.2 251.5 147.8C253.5 147.4 257 146.8 259.2 146.6C264.8 146.1 269.9 145.4 274.4 144.5C278.1 143.7 282.4 143.2 287.6 142.8C289.1 142.6 291.7 142.3 293.2 142C299.3 140.9 309.9 139.5 314.9 139C316.3 138.9 319.1 138.5 321.2 138.2C330 136.7 334 136.2 338.6 135.9C340 135.8 342.5 135.5 344.2 135.2C346 135 348.4 134.7 349.6 134.5C350.9 134.4 352.8 134.1 354 134C357.8 133.6 363.3 133.3 372 133C382.4 132.7 393.1 132.3 394.1 132.1C394.5 132.1 400.4 131.8 407.2 131.5C414 131.2 421.4 130.9 423.6 130.8C425.8 130.6 431.8 130.4 437 130.2C448 129.9 460.2 129.4 468.6 128.9C471.9 128.7 476.3 128.4 478.4 128.3C480.4 128.1 484.3 127.9 486.9 127.6C489.5 127.4 495.4 127.2 500.1 127C504.8 126.9 511.1 126.6 514.1 126.5C517.1 126.4 521.3 126.2 523.4 126.1C525.4 126 528.2 125.8 529.5 125.6C531.6 125.3 536.1 125 549.6 124.2C554.1 124 557.9 123.7 562 123.2C563.2 123.1 565.5 122.9 567.2 122.8C569 122.6 570.8 122.4 571.3 122.3C572.7 121.8 575.1 120.1 576.4 118.6C577.1 117.8 578 116.7 578.5 116.1C579.5 115 587.5 99.9 588.1 97.8C588.4 97 589.6 94.3 590.9 91.8C592.2 89.2 593.4 86.4 593.6 85.5C593.9 84.6 594.6 82.9 595.2 81.6C595.8 80.4 596.6 78.6 596.9 77.6C597.3 76.7 598 75 598.5 74C599 73 599.6 71.5 599.7 70.8C599.9 70.1 600.7 68.1 601.6 66.3C602.5 64.5 603.3 62.6 603.5 62.1C603.7 61.6 605.1 58.5 606.8 55.4C608.4 52.2 610 48.7 610.5 47.5C610.9 46.4 611.6 45 612 44.3C612.5 43.7 613.1 42.3 613.5 41.3C613.9 40.3 614.6 38.9 615 38.3C615.5 37.7 616.3 36.2 616.8 35C617.4 33.9 618.1 32.4 618.5 31.8C618.9 31.3 619.6 29.9 620.1 28.9C620.6 27.9 621.3 26.5 621.7 25.9C622.1 25.4 622.6 24.4 622.9 23.8C623.1 23.1 623.8 21.6 624.5 20.4C625.2 19.1 626.1 17.2 626.5 16.1C627 15 627.7 13.5 628.3 12.7C628.8 12 629.5 10.7 629.9 10C630.3 9.2 631.1 7.8 631.7 6.9C632.4 5.9 633.2 4.5 633.6 3.8C634 3.1 634.6 2.4 634.9 2.3C635.6 2 637.7 2.3 638 2.8C638.7 3.9 638.4 6.6 636.9 12.1C636.5 13.4 636 15.4 635.6 16.8C635.3 18.1 634.7 19.9 634.3 20.9C633.9 21.9 633.3 23.7 633 24.9C632.7 26.1 632 28 631.5 29.2C630.9 30.3 630.1 32.4 629.6 33.8C629.2 35.1 628.5 36.8 628.1 37.5C627.8 38.2 627.2 39.6 626.7 40.7C626.3 41.7 625.7 43.1 625.4 43.8C625.1 44.4 624.3 46.1 623.6 47.5C623 48.9 621.3 52.4 619.9 55.2C618.5 58.1 617.2 60.8 617 61.4C616.5 62.9 615.2 65.8 614.5 66.9C613.7 68.2 610.6 74.9 609.9 77C609.6 77.9 608.9 79.5 608.3 80.6C607.7 81.7 607 83.2 606.8 84C606.5 84.8 605.8 86 605.4 86.9C604.9 87.7 604.2 89.7 603.8 91.2C603.3 92.8 602.6 95 602.3 96C601.9 97 601.4 98.7 601.2 99.6C601 100.6 600.5 102.4 600.3 103.8C599.8 105.7 599.2 107.1 597 111.7C594 117.8 593.7 118.6 593.9 120.4C594.3 123.3 595.1 123.6 601.4 123.6C604.1 123.6 607.2 123.5 608.8 123.3C611.9 122.9 649.9 122.8 661.9 123.2C665.7 123.4 675.3 123.5 683.1 123.5C704 123.6 727.6 123.9 737.8 124.4C742.6 124.6 750.4 124.9 755.1 125C759.8 125.1 764 125.4 764.6 125.5C765.2 125.6 768.9 125.8 772.9 125.9C783.1 126.1 788.2 126.4 790.4 127.1C791.8 127.5 793.2 127.6 798.9 127.8C802.6 127.9 807.1 128.1 809 128.2C810.9 128.4 813.9 128.6 815.8 128.7C820.7 129.1 826.4 130.6 827.5 131.8C828.1 132.6 828 134.7 827.3 135.3C825.9 136.4 821.2 136.4 817 135.2C813 134 802.6 133.9 707.9 133.6C681.5 133.5 659.7 133.4 659.5 133.4C659.3 133.3 646.5 133.2 630.9 133.2C603.8 133.2 602.5 133.3 599.6 133.7C597.9 134 594.8 134.4 592.7 134.6C587.4 135.1 586.3 135.9 584.5 140.3C584.1 141.4 583.2 143.1 582.6 144.2C582 145.3 581.3 146.7 581 147.4C580.8 148.1 580 149.5 579.3 150.5C578.6 151.4 577.8 152.9 577.5 153.7C576.8 155.6 576 157.2 574.4 160C573.6 161.3 572.4 163.7 571.6 165.2C570.8 166.8 569.8 168.6 569.3 169.2C568.9 169.8 568 171.4 567.4 172.8C566.7 174.2 566 175.7 565.6 176.1C565.3 176.5 564.9 177.3 564.6 177.9C564.4 178.4 563.9 179.3 563.5 179.8C563 180.4 562.4 181.6 562 182.6C561.2 184.8 560.2 186.8 559.4 187.9C558.8 188.8 556.8 192.3 554.9 196C554.1 197.6 553.3 199.1 553 199.4C552.5 199.9 550.5 203.4 550.5 203.6C550.5 203.7 550.2 204.3 549.8 205C549.4 205.6 548.9 206.7 548.6 207.4C548.4 208 547.5 209.4 546.8 210.5C546 211.5 545 213.1 544.5 214C544.1 214.9 543.4 215.9 543.1 216.2C542.8 216.6 542.1 217.8 541.5 219C540.9 220.2 540.2 221.5 539.8 222C539.5 222.4 538.7 223.8 538.1 225.1C537.5 226.3 536.7 227.9 536.3 228.5C535.8 229.1 535.5 229.7 535.5 229.8C535.5 230.2 531.4 237.7 530.2 239.4C529.6 240.3 528.8 241.6 528.6 242.1C528.4 242.7 527.8 243.7 527.3 244.5C526.8 245.3 525.8 247.1 524.9 248.6C524.1 250.1 523.2 251.6 523 251.9C522.7 252.2 522.1 253.3 521.6 254.4C521.2 255.5 520.4 256.8 520 257.3C519.6 257.8 518.8 259.1 518.3 260.3C517.8 261.4 517 262.7 516.6 263.2C516.3 263.6 515.5 264.9 514.9 265.9C512.8 269.8 511.5 271.9 510.8 273C510.4 273.6 509.6 274.9 509.1 275.9C508.7 276.8 507.7 278.6 507 279.7C506.3 280.9 505.7 282.1 505.6 282.5C505.5 282.9 505 283.7 504.5 284.3C504 284.9 503 286.4 502.4 287.8C501.7 289.1 500.9 290.6 500.5 291.2C500.1 291.7 499.6 292.5 499.5 292.9C499.2 293.6 497.5 296.3 494.6 300.8C494 301.7 492.8 303.8 492 305.4C491.2 307.1 490.2 309 489.7 309.7C489.2 310.4 488.2 312 487.5 313.3C486.8 314.6 485.5 316.8 484.7 318.1C483.8 319.5 482.6 321.8 481.8 323.1C481.1 324.5 480.2 325.9 480 326.2C479.8 326.6 479.2 327.6 478.8 328.4C478.4 329.2 477.7 330.3 477.2 330.9C476.8 331.4 476.1 332.6 475.6 333.6C475.2 334.5 474.3 335.8 473.8 336.4C473.2 337 472.6 338.2 472.2 339.3C471.8 340.2 471.2 341.4 470.8 342C470.4 342.5 469.6 343.7 469.1 344.8C466.3 350 465.8 351 465.4 352.1C464.8 353.7 464.1 354.4 463 354.8C461.8 355.1 461.8 355.1 461.4 357.4C461.2 358.4 460.6 360.3 460 361.7C459.4 363 458.8 364.7 458.6 365.4C458.4 366.1 457.7 367.5 457 368.6C456.3 369.7 455.2 371.8 454.3 373.2C453.5 374.6 452.4 376.5 451.8 377.3C451.2 378.2 450.2 379.9 449.6 381.1C449 382.3 448.1 383.7 447.7 384.2C447.2 384.7 446.4 385.8 445.9 386.7C444.8 388.5 439.7 393.7 438.4 394.4C437.4 394.8 435.9 394.7 435.1 394.2C434.5 393.7 435.5 390.9 437.2 388.4C438 387.3 439 385.6 439.6 384.6C440.2 383.6 441.1 382.1 441.6 381.3C443.8 377.9 445.3 375.5 446.6 372.9C447.4 371.4 448.3 369.8 448.6 369.3C448.9 368.8 449.4 367.9 449.6 367.3C450.4 365.1 450.9 364.1 451.5 363.4C451.8 363 452.5 361.7 453.1 360.4C453.6 359.2 454.3 357.8 454.7 357.3C455 356.9 455.6 355.8 456 354.9C456.4 354.1 457.1 352.8 457.6 352C458 351.2 458.8 349.8 459.2 348.8C459.9 347.2 461 345.1 463.5 340.8C464.8 338.4 468.7 330.5 469.5 328.5C470.4 326.5 473.3 320.8 474.1 319.6C474.7 318.8 477.4 313.4 478.8 310.2C479.2 309.2 480.1 307.4 480.8 306.2C481.4 305.1 482.2 303.5 482.5 302.7C482.8 301.9 483.4 300.8 483.8 300.2C484.3 299.6 485.7 297.1 486.9 294.6C488.1 292.1 489.4 289.7 489.7 289.2C490 288.6 491.7 285.4 493.4 282C495.2 278.6 497.4 274.3 498.4 272.4C499.4 270.4 501.8 265.7 503.8 261.7C505.8 257.8 507.9 253.8 508.5 252.7C510.4 249.5 511.2 247.8 511.6 246.8C511.8 246.2 512.6 244.8 513.2 243.6C513.9 242.5 514.9 240.7 515.3 239.5C515.8 238.4 516.5 236.9 517 236.3C517.4 235.7 518.1 234.3 518.5 233.2C518.9 232.1 519.5 231.1 519.7 231C520.1 230.6 521.5 227.8 521.5 227.4C521.5 227.2 522 226.2 522.6 225.1C523.3 224 524.1 222.3 524.6 221.2C525 220.2 525.8 218.6 526.3 217.8C526.8 216.9 527.8 215.2 528.4 214C529 212.8 529.9 211.3 530.3 210.6C530.7 209.9 531.3 208.6 531.6 207.7C532 206.7 532.7 205.4 533.2 204.7C533.6 204 534.4 202.6 534.9 201.6C535.3 200.6 536 199.3 536.5 198.7C536.9 198.1 537.5 196.9 537.9 196C538.2 195.1 539 193.6 539.6 192.6C540.2 191.7 541 190.1 541.5 189.1C541.9 188.2 542.6 186.8 543 186.2C543.4 185.5 544.2 183.9 544.7 182.7C545.3 181.5 546.1 179.9 546.6 179.2C547.1 178.5 547.8 177.1 548.1 176.1C548.5 175.2 549.1 173.8 549.6 173C550.1 172.2 550.8 171 551.1 170.2C551.5 169.5 552.3 168.1 552.9 167.2C553.5 166.3 554.2 165.1 554.4 164.6C554.6 164.1 555 163.3 555.4 162.9C555.7 162.5 556.5 161.1 557.1 159.9C557.8 158.6 558.6 157.2 559 156.8C559.4 156.3 560.2 154.8 560.7 153.4C561.3 152 562.1 150.2 562.6 149.5C563.1 148.7 563.9 147 564.3 145.7C564.8 144.4 565.5 142.8 565.8 142.1C566.7 140.4 566.8 138.1 566.1 137.5C565.1 136.7 562.1 136.6 552.6 137C550 137.2 543.8 137.4 538.9 137.5C532 137.7 529.6 137.8 528.5 138.1C527.7 138.3 525.8 138.6 524.1 138.7C522.5 138.9 519.4 139.2 517.2 139.4C515.1 139.6 510.9 139.9 507.8 140.1C504.8 140.3 502.2 140.5 502 140.6C501.9 140.7 500.2 140.9 498.3 141.1C496.4 141.3 493.8 141.7 492.4 141.9C488.5 142.5 484.5 142.9 480.3 143.2C478.2 143.4 475.9 143.6 475.3 143.7C474.6 143.9 472.7 144 471 144.1C469.3 144.2 466.9 144.4 465.8 144.6C461.2 145.4 454.9 146 445.4 146.5C443.3 146.6 439.2 147 436.2 147.3C433.3 147.7 429.7 148 428.2 148.1C426.8 148.2 425 148.4 424.2 148.5C423.5 148.7 420.6 148.9 417.9 149.1C415.1 149.3 411.8 149.6 410.4 149.7C409 149.9 406.1 150.1 403.9 150.3C401.7 150.4 398.6 150.7 397 150.9C391 151.6 386.2 152.1 378.6 152.6C370.1 153.2 362.4 154 359.1 154.6C355.9 155.2 353.4 155.5 349.5 155.7C342.6 156.1 335.7 156.8 331 157.6C329 158 326.2 158.3 324.8 158.5C323.3 158.6 320.7 158.9 318.9 159.1C317.1 159.3 314 159.6 311.9 159.7C309.9 159.9 306.1 160.3 303.6 160.8C301 161.2 297.7 161.6 296.1 161.7C294.6 161.9 292.7 162.1 291.9 162.2C291.1 162.4 288.7 162.6 286.8 162.8C284.8 162.9 281.3 163.4 279 163.8C276.7 164.2 273.8 164.6 272.4 164.8C271 164.9 268.2 165.2 266.2 165.5C263 165.9 258.7 166.4 254.6 166.9C253.8 167 251.6 167.4 249.7 167.8C247.8 168.1 245.6 168.5 244.8 168.6C244 168.7 242.2 168.9 240.9 169.1C239.5 169.3 236.8 169.6 234.9 169.7C232.9 169.9 230.1 170.3 228.5 170.6C222.6 171.9 220.5 172.2 217.5 172.5C215.7 172.6 214 172.9 213.6 173C213.2 173.2 212 173.4 210.9 173.5C209.8 173.7 206.9 174.2 204.5 174.6C200.3 175.5 197.2 175.9 191.5 176.5C190.1 176.6 188.1 177 187 177.3C185.3 177.7 183.2 178.1 174.9 179.3C172.9 179.5 169.9 180 168 180.4C166.1 180.7 163.2 181.3 161.4 181.6C159.6 182 156.7 182.4 155 182.6C151.2 183.1 147.3 183.8 144.8 184.5C143.7 184.8 140.1 185.4 136.7 186C133.3 186.6 129.9 187.2 129.1 187.5C128.3 187.8 125.9 188.5 123.8 189C121.6 189.5 118.7 190.4 117.2 190.8C115.8 191.3 113.4 191.9 112 192.1C110.5 192.3 108.9 192.6 108.4 192.9C106.2 193.8 103.2 194.8 100.8 195.5C99.3 195.9 96.6 196.8 94.7 197.5C92.8 198.2 91.1 198.8 90.9 198.8C90.8 198.7 89.4 199.4 87.9 200.1C86.4 200.9 85 201.5 84.8 201.5C84.3 201.5 82.5 202.5 81.5 203.3C81 203.7 79.8 204.3 78.8 204.6C77.8 204.9 76.1 205.8 75.1 206.5C73.3 207.7 67.4 210.8 66.2 211.1C63.7 211.9 62.3 213.1 62 215C61.5 217.7 61.6 225.7 62.1 227.2C63.2 230.4 63.6 230.8 69.6 234.1C71.2 235 72.9 236 73.2 236.2C74 236.8 76.5 237.8 78.9 238.6C79.9 239 81.2 239.6 81.9 240C82.7 240.5 84.2 241.1 85.5 241.4C86.8 241.7 88.4 242.4 89.2 242.9C90.9 243.9 92 244.3 95.3 245.1C96.6 245.5 98.5 246.1 99.5 246.6C100.5 247.1 102.4 247.7 103.6 248C104.9 248.3 107.3 249 109 249.4C110.7 249.9 114.2 250.6 116.8 251.1C119.3 251.6 123.2 252.4 125.5 252.9C127.8 253.4 130.3 253.9 131 254C134.5 254.5 138.4 255 141.5 255.4C143.4 255.6 145.5 255.9 146.2 256.1C149 256.8 153.7 257.5 157.3 257.7C159.4 257.9 161.2 258.1 161.3 258.2C161.4 258.2 163.4 258.5 165.6 258.7C167.8 258.8 170.6 259.2 171.8 259.4C175 259.9 178.4 260.2 184.6 260.5C191.4 260.8 197.3 261.2 201.1 261.5C202.6 261.6 206.1 261.9 208.8 262C211.4 262.1 215.3 262.4 217.2 262.5C239.7 264.1 246.4 264.2 287.2 264.2C307 264.3 319.5 264.4 320.9 264.5C323.1 264.8 327.8 265.8 329.1 266.2C332.2 267.4 341.6 267.9 344.1 267C346.5 266.1 348.5 266.5 349 267.8C349.2 268.3 349.2 268.6 349.1 268.8C348.7 269.1 346.1 269.4 340.6 269.7C338 269.9 334.4 270.2 332.6 270.4C321.4 271.6 271 272 253 270.9C251.6 270.8 246.1 270.6 240.9 270.5C235.2 270.4 230.1 270.1 228.1 269.9C224.1 269.4 220.9 269.1 215 268.8C212.5 268.6 208.1 268.3 205.2 268.1C202.4 267.9 198 267.6 195.5 267.5C189 267.1 184.9 266.7 173.2 265.3C171.1 265 167.9 264.7 166 264.6C164.1 264.5 162.2 264.3 161.6 264.2C161.1 264.1 159 263.9 157 263.8C155 263.6 151.5 263.2 149.2 262.9C147 262.5 143.8 262.1 142.2 262C140.7 261.9 137.5 261.6 135.2 261.4C133 261.2 130.1 260.9 128.8 260.9C127.5 260.8 124.3 260.5 121.7 260.1C119 259.8 115.2 259.3 113.2 259.1C111.3 258.9 108.7 258.6 107.6 258.4C104.9 257.9 99.5 257.3 95.8 257.1C94 257 91.3 256.8 89.6 256.5C80.8 255.1 78.3 255.3 77.4 257.5C76.6 259.5 77 260 79.5 260.6C81.6 261.2 84.3 263.1 86.2 265.4C89.9 269.7 93.4 273.5 94.6 274.6C95.3 275.2 97.2 277.2 98.7 278.9C100.2 280.7 102.2 282.9 103.1 283.9C105.3 286.1 107.1 288.2 109 290.7C109.8 291.7 110.7 292.9 111.1 293.2C111.5 293.6 112.7 295.1 113.8 296.5C114.9 297.9 116.4 299.7 117 300.4C118.7 302.3 120.3 304.2 121.5 305.8C122.1 306.6 123.5 308.4 124.6 309.8C127.2 313.2 128.3 314.5 130 316.3C130.8 317 131.7 318.2 132.2 318.8C134.3 321.6 140.5 329.2 142.4 331.3C143.3 332.2 144.4 333.6 144.9 334.3C145.7 335.7 147.3 337.6 151.1 342C152.4 343.5 153.9 345.3 154.6 346.1C155.2 346.9 156.8 348.8 158.2 350.3C159.6 351.8 161 353.5 161.3 354.1C161.6 354.7 162.6 355.9 163.5 356.9C164.4 357.8 165.8 359.5 166.6 360.5C167.3 361.5 168.4 362.8 169 363.2C169.6 363.7 171.2 365.3 172.4 366.7C173.7 368.2 176.6 371.4 178.9 373.9C185.9 381.5 188.9 384.9 190.6 387.5C192.5 390.3 193.7 391.7 194.5 392.2C195.5 392.8 197 394.4 198.3 396C198.7 396.6 200.5 398.6 202.3 400.3C206.4 404.4 207.5 406.6 206.4 408.2C205.9 408.9 204.9 408.9 203 408.2Z"/></symbol>
+  </svg>
+
+  <!-- =========================================================
+       SCHERMATA DI BENVENUTO (copertina): nome, la barca del logo
+       sull'orizzonte con il suo riflesso e le cinque lingue, ognuna
+       scritta nella sua lingua. Copre la pagina quando lo
+       decide lo script nel <head>. Le lingue vengono riscritte dallo
+       script in base a LINGUE (nei dati): qui ci sono già solo per
+       comparire subito, senza attese.
+       ========================================================= -->
+  <div class="benvenuto" id="benvenuto" role="dialog" aria-modal="true" aria-labelledby="benvenuto-titolo">
+    <div class="benvenuto-interno">
+      <p class="benvenuto-nome" data-config="nome">mar.sal.</p>
+      <!-- La barca del logo poggia sull'orizzonte e si riflette nel mare -->
+      <div class="benvenuto-orizzonte" aria-hidden="true">
+        <svg class="benvenuto-barca" viewBox="0 0 830 411" width="196" height="97"><use href="#i-logo"></use></svg>
+        <span class="benvenuto-riflesso"><svg viewBox="0 0 830 411" width="196" height="60" preserveAspectRatio="none"><use href="#i-logo"></use></svg></span>
+      </div>
+      <p class="sr-only" id="benvenuto-titolo">Scegli la lingua. <span lang="en">Choose your language.</span> <span lang="fr">Choisissez votre langue.</span> <span lang="es">Elige tu idioma.</span> <span lang="de">Sprache wählen.</span></p>
+      <ul class="benvenuto-lingue" id="benvenuto-lingue">
+        <li><button type="button" class="benvenuto-lingua" data-lingua="it" lang="it">Italiano</button></li>
+        <li><button type="button" class="benvenuto-lingua" data-lingua="en" lang="en">English</button></li>
+        <li><button type="button" class="benvenuto-lingua" data-lingua="fr" lang="fr">Français</button></li>
+        <li><button type="button" class="benvenuto-lingua" data-lingua="es" lang="es">Español</button></li>
+        <li><button type="button" class="benvenuto-lingua" data-lingua="de" lang="de">Deutsch</button></li>
+      </ul>
+    </div>
+  </div>
+
+  <a class="salta" href="#menu" data-t>Vai al menu</a>
+
+  <!-- =========================================================
+       TESTATA
+       ========================================================= -->
+  <header class="testata" id="testata">
+    <div class="contenitore testata-interno">
+      <!-- Scelta della lingua: il menu viene tradotto subito, senza ricaricare la pagina -->
+      <div class="lingue">
+        <button class="btn btn-lingua" id="btn-lingua" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menu-lingue">
+          <svg class="icona" aria-hidden="true"><use href="#i-mondo"></use></svg>
+          <span class="lingua-codice" id="lingua-codice" aria-hidden="true">IT</span>
+          <span class="sr-only" id="lingua-etichetta">Lingua: Italiano</span>
+        </button>
+        <ul class="menu-lingue" id="menu-lingue" role="menu" aria-labelledby="btn-lingua" hidden><!-- generato dallo script --></ul>
+      </div>
+
+      <!-- LOGO: definito una volta nello sprite (#i-logo). Il colore segue "color" di .marchio.
+           Per usare un file al suo posto: <img class="logo-marchio" src="logo.svg" alt=""> -->
+      <a class="marchio" href="#menu">
+        <svg class="logo-marchio" viewBox="0 0 830 411" width="93" height="46" aria-hidden="true"><use href="#i-logo"></use></svg>
+        <span class="marchio-nome" data-config="nome">mar.sal.</span>
+      </a>
+
+      <!-- Indice (tre linee): apre l'elenco delle parti del menu -->
+      <button class="btn btn-indice" id="btn-indice" type="button" aria-expanded="false" aria-controls="indice">
+        <svg class="icona icona-apri" aria-hidden="true"><use href="#i-menu"></use></svg>
+        <svg class="icona icona-chiudi" aria-hidden="true"><use href="#i-chiudi"></use></svg>
+        <span class="sr-only" data-t>Indice del menu</span>
+      </button>
+    </div>
+
+    <!-- Pannello dell'indice: le voci sono i FILTRI dei dati, generate dallo script -->
+    <nav class="indice" id="indice" aria-labelledby="btn-indice" hidden>
+      <div class="contenitore">
+        <ul class="indice-lista" id="indice-lista"></ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Velo sulla pagina mentre l'indice è aperto -->
+  <div class="velo" id="velo" hidden></div>
+
+  <main id="contenuto">
+    <h1 class="sr-only"><span data-t>Benvenuti da</span> <span data-config="nome">mar.sal.</span></h1>
+
+    <!-- =========================================================
+         MENU
+         ========================================================= -->
+    <section class="menu" id="menu" aria-labelledby="titolo-menu">
+      <div class="contenitore">
+        <div class="menu-intro">
+          <h2 class="menu-titolo" id="titolo-menu" tabindex="-1" data-t>Il menu</h2>
+          <!-- Compare quando dall'indice si sceglie una parte del menu: toccandolo si torna a tutto il menu -->
+          <button class="filtro-attivo" id="filtro-attivo" type="button" hidden>
+            <span id="filtro-attivo-nome"></span>
+            <span class="sr-only">– <span data-t>mostra tutto il menu</span></span>
+            <svg class="icona" aria-hidden="true"><use href="#i-chiudi"></use></svg>
+          </button>
+        </div>
+
+        <!-- Annuncio per i lettori di schermo quando cambia la parte di menu mostrata -->
+        <p class="sr-only" id="annuncio" role="status" aria-live="polite"></p>
+
+        <div id="sezioni"><!-- sezioni e prodotti generati dallo script --></div>
+
+        <noscript>
+          <div class="avviso">
+            <p>Per vedere il menu attiva JavaScript nel browser, oppure chiedi il menu cartaceo al personale.</p>
+          </div>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         INFORMAZIONI UTILI
+         ========================================================= -->
+    <section class="info" id="info" aria-labelledby="titolo-info">
+      <div class="contenitore">
+        <h2 class="info-titolo" id="titolo-info" data-t>Informazioni utili</h2>
+
+        <article class="info-blocco" aria-labelledby="titolo-allergeni">
+          <h3 id="titolo-allergeni">
+            <svg class="icona" aria-hidden="true"><use href="#i-info"></use></svg>
+            <span data-t>Allergie e intolleranze</span>
+          </h3>
+          <p data-t>Alcuni prodotti sono preparati con materia prima congelata o surgelata all’origine. Se hai delle allergie e/o intolleranze alimentari chiedi informazioni al nostro staff. Saremo lieti di aiutarti nel migliore dei modi.</p>
+          <!-- Legenda: compare solo se nei prodotti usi il campo "tag" -->
+          <p class="legenda-intro" id="legenda-intro" hidden data-t>Le indicazioni che trovi accanto ai prodotti:</p>
+          <ul class="legenda" id="legenda" hidden></ul>
+
+          <details>
+            <summary data-t>Elenco dei 14 allergeni (Reg. UE 1169/2011)</summary>
+            <ul class="lista-allergeni">
+              <li data-t>Cereali con glutine</li>
+              <li data-t>Crostacei</li>
+              <li data-t>Uova</li>
+              <li data-t>Pesce</li>
+              <li data-t>Arachidi</li>
+              <li data-t>Soia</li>
+              <li data-t>Latte e lattosio</li>
+              <li data-t>Frutta a guscio</li>
+              <li data-t>Sedano</li>
+              <li data-t>Senape</li>
+              <li data-t>Semi di sesamo</li>
+              <li data-t>Anidride solforosa e solfiti</li>
+              <li data-t>Lupini</li>
+              <li data-t>Molluschi</li>
+            </ul>
+          </details>
+        </article>
+
+        <p class="nota-prezzi" data-t>Prezzi in euro, IVA inclusa. Immagini e ingredienti possono variare.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="piede">
+    <div class="contenitore piede-interno">
+      <svg class="logo-marchio" viewBox="0 0 830 411" width="81" height="40" aria-hidden="true"><use href="#i-logo"></use></svg>
+      <p class="piede-nome" data-config="nome">mar.sal.</p>
+      <p>© <span id="anno">2026</span> <span data-config="nome">mar.sal.</span></p>
+    </div>
+  </footer>
+
+  <button class="torna-su" id="torna-su" type="button">
+    <svg class="icona" aria-hidden="true"><use href="#i-su"></use></svg>
+    <span class="sr-only" data-t>Torna all’inizio</span>
+  </button>
+
+  <!-- =========================================================
+       DATI DEL MENU — MODIFICA QUI
+       Per aggiornare il menu basta cambiare questo blocco:
+       non serve toccare HTML, CSS o la logica più in basso.
+       ========================================================= -->
+  <script>
+    /* ---------------------------------------------------------
+       1) DATI DEL LOCALE
+       --------------------------------------------------------- */
+    const CONFIG = {
+      nome: 'mar.sal.',
+
+      // Indirizzo e offerta non compaiono nella pagina: servono solo a Google
+      // (dati strutturati) per riconoscere il locale. Aggiungi il civico, es. 'Borgo Marinari, 12'
+      indirizzo: { via: 'Borgo Marinari', cap: '80132', citta: 'Napoli', provincia: 'NA' },
+      offerta: ['Cocktail', 'Aperitivo', 'Caffetteria', 'Brunch']
+    };
+
+    /* ---------------------------------------------------------
+       2) PARTI DEL MENU: decidono l'ordine (prima il bar, poi cucina
+       e caffetteria). Non hanno un titolo visibile nella pagina.
+       --------------------------------------------------------- */
+    const PARTI = [
+      { id: 'bar',    nome: 'Bar' },
+      { id: 'cucina', nome: 'Cucina e caffetteria' }
+    ];
+
+    /* ---------------------------------------------------------
+       3) SEZIONI DEL MENU (nell'ordine in cui appaiono)
+       id: usato nei prodotti, nell'indice e nei link (es. index.html#gin-tonic)
+       nome: titolo della sezione; senza nome la sezione non ha titolo (come la prima)
+       parte: 'bar' o 'cucina'
+       nota: riga sotto il titolo; notaFinale: riga in fondo alla sezione
+       immagine: foto della sezione (facoltativo)
+       --------------------------------------------------------- */
+    const CATEGORIE = [
+      { id: 'prima-di-cena', parte: 'bar' },   // prima sezione: senza titolo
+      { id: 'dopo-cena', parte: 'bar', nome: 'Dopo cena' },
+      { id: 'tutto-il-giorno', parte: 'bar', nome: 'Tutto il giorno' },
+      { id: 'long-drinks', parte: 'bar', nome: 'Long drinks' },
+      { id: 'gin-tonic', parte: 'bar', nome: 'Gin tonic', nota: 'I nostri cocktail sono serviti con le toniche premium Fever-Tree.' },
+      { id: 'vodka-tonic', parte: 'bar', nome: 'Vodka tonic' },
+      { id: 'pestati', parte: 'bar', nome: 'Cocktail pestati' },
+      { id: 'cooler', parte: 'bar', nome: 'Cooler' },
+      { id: 'sparkling', parte: 'bar', nome: 'Cocktail sparkling' },
+      { id: 'frozen', parte: 'bar', nome: 'Cocktail frozen' },
+      { id: 'sours', parte: 'bar', nome: 'Sour’s' },
+      { id: 'birre-artigianali', parte: 'bar', nome: 'Birre artigianali napoletane N’Artigiana' },
+      { id: 'birre-bottiglia', parte: 'bar', nome: 'Birre in bottiglia' },
+      { id: 'vini', parte: 'bar', nome: 'Vini' },
+      { id: 'distillati', parte: 'bar', nome: 'Distillati' },
+      { id: 'digestivi', parte: 'bar', nome: 'Digestivi' },
+      { id: 'aperitivi', parte: 'bar', nome: 'Aperitivi' },
+      { id: 'toast', parte: 'cucina', nome: 'Toast' },
+      { id: 'crostoni', parte: 'cucina', nome: 'Crostoni' },
+      { id: 'bruschettone', parte: 'cucina', nome: 'Bruschettone' },
+      { id: 'secondi', parte: 'cucina', nome: 'Secondi al piatto' },
+      { id: 'saltimbocca', parte: 'cucina', nome: 'Saltimbocca' },
+      { id: 'insalatone', parte: 'cucina', nome: 'Insalatone' },
+      { id: 'dolci', parte: 'cucina', nome: 'Dolci', notaFinale: 'Alcuni prodotti sono preparati con materia prima congelata o surgelata all’origine. Se hai delle allergie e/o intolleranze alimentari chiedi informazioni al nostro staff. Saremo lieti di aiutarti nel migliore dei modi.' },
+      { id: 'caffe', parte: 'cucina', nome: 'Caffè e bevande calde', nota: 'Personalizzazioni: +€ 2,00' },
+      { id: 'succhi', parte: 'cucina', nome: 'Succhi e spremute' },
+      { id: 'bibite', parte: 'cucina', nome: 'Bibite' },
+      { id: 'granite', parte: 'cucina', nome: 'Granite' },
+      { id: 'gelateria', parte: 'cucina', nome: 'Gelateria', nota: 'Personalizzazioni: +€ 1,00' },
+      { id: 'antica-gelateria', parte: 'cucina', nome: 'Antica gelateria' },
+      { id: 'frullati', parte: 'cucina', nome: 'Frullati & frappè' },
+      { id: 'pasticceria', parte: 'cucina', nome: 'Pasticceria & rosticceria' }
+    ];
+
+    /* ---------------------------------------------------------
+       4) INDICE (il menu a tre linee in alto a destra)
+       Ogni voce mostra solo alcune sezioni del menu.
+       categorie: quali sezioni mostra la voce (null = tutte)
+       --------------------------------------------------------- */
+    const FILTRI = [
+      { id: 'tutti',     etichetta: 'Tutto il menu', categorie: null },
+      { id: 'colazione', etichetta: 'Colazione', categorie: ['pasticceria', 'caffe', 'succhi'] },
+      { id: 'aperitivo', etichetta: 'Aperitivo', categorie: ['prima-di-cena', 'aperitivi'] },
+      { id: 'cocktail',  etichetta: 'Cocktail',  categorie: ['prima-di-cena', 'dopo-cena', 'tutto-il-giorno', 'long-drinks', 'gin-tonic', 'vodka-tonic', 'pestati', 'cooler', 'sparkling', 'frozen', 'sours'] },
+      { id: 'birre',     etichetta: 'Birre',     categorie: ['birre-artigianali', 'birre-bottiglia'] },
+      { id: 'bibite',    etichetta: 'Bibite',    categorie: ['bibite', 'succhi'] },
+      { id: 'vini',      etichetta: 'Vini e distillati', categorie: ['vini', 'distillati', 'digestivi'] },
+      { id: 'cucina',    etichetta: 'Cucina',    categorie: ['toast', 'crostoni', 'bruschettone', 'secondi', 'saltimbocca', 'insalatone'] },
+      { id: 'dolci',     etichetta: 'Dolci e gelati', categorie: ['dolci', 'gelateria', 'antica-gelateria', 'granite', 'frullati'] }
+    ];
+
+    /* ---------------------------------------------------------
+       5) ALLERGENI E NOTE (facoltativo)
+       Etichette da aggiungere ai prodotti con il campo "tag",
+       es. tag: ['lattosio', 'glutine']. Appaiono sotto la voce e
+       nella legenda delle informazioni utili, in fondo alla pagina.
+       tipo 'scelta' = etichetta blu vivo, tipo 'allergene' = etichetta blu tenue
+       --------------------------------------------------------- */
+    const TAG = {
+      'vegano':        { etichetta: 'Vegano',            tipo: 'scelta' },
+      'vegetariano':   { etichetta: 'Vegetariano',       tipo: 'scelta' },
+      'senza-glutine': { etichetta: 'Senza glutine',     tipo: 'scelta' },
+      'analcolico':    { etichetta: 'Analcolico',        tipo: 'scelta' },
+      'glutine':       { etichetta: 'Contiene glutine',  tipo: 'allergene' },
+      'lattosio':      { etichetta: 'Contiene lattosio', tipo: 'allergene' },
+      'uova':          { etichetta: 'Contiene uova',     tipo: 'allergene' },
+      'frutta-guscio': { etichetta: 'Frutta a guscio',   tipo: 'allergene' },
+      'soia':          { etichetta: 'Contiene soia',     tipo: 'allergene' },
+      'sesamo':        { etichetta: 'Contiene sesamo',   tipo: 'allergene' },
+      'solfiti':       { etichetta: 'Contiene solfiti',  tipo: 'allergene' }
+    };
+
+    /* ---------------------------------------------------------
+       6) PRODOTTI (dal menu definitivo di mar.sal.)
+       Campi:
+         categoria    id della sezione
+         nome         nome della voce
+         gruppo       sottotitolo dentro la sezione, es. 'Vini Bianchi' (facoltativo)
+         dettaglio    testo breve accanto al nome, es. '4,8% vol.' (facoltativo)
+         descrizione  ingredienti o descrizione (facoltativo)
+         prezzo       numero in euro (es. 5.50 = 5,50; 10.00 = 10)
+         varianti     in alternativa a prezzo: [{ nome: '33 cl', prezzo: 5.50 }, …]
+         grassetto    true per scrivere il nome in grassetto (facoltativo)
+         nota         riga in corsivo sotto la voce (facoltativo)
+         tag          allergeni e note, es. ['vegano'] (facoltativo, vedi sopra)
+         badge        'Consigliato' o 'Novità', compare sopra il nome (facoltativo)
+         immagine     indirizzo di una foto, es. 'foto/negroni.jpg' (facoltativo)
+         stato        'esaurito' per segnarlo come terminato, 'nascosto' per toglierlo
+       --------------------------------------------------------- */
+    const PRODOTTI = [
+      /* Prima sezione, senza titolo (cocktail da aperitivo) */
+      { categoria: 'prima-di-cena', nome: 'Componi il tuo spritz', descrizione: 'Scegli tra Apertass e Aperol Spritz', prezzo: 9.00 },
+      { categoria: 'prima-di-cena', nome: 'Apertass', descrizione: 'Aperol, Tassoni, granita di limone', prezzo: 9.00 },
+      { categoria: 'prima-di-cena', nome: 'Aperol Spritz', descrizione: 'Aperol, Prosecco, soda', prezzo: 9.00 },
+      { categoria: 'prima-di-cena', nome: 'Americano', descrizione: 'Vermouth rosso, Bitter Campari, soda', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Banana Daiquiri', descrizione: 'Crema di banana, succo di limone, Rum Bacardi', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Garibaldi', descrizione: 'Bitter Campari, succo d’arancia', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Boulevardier', descrizione: 'Whiskey, Vermouth rosso, Campari', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Martini Cocktail', descrizione: 'Gin, Vermouth dry', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Campari Spritz', descrizione: 'Campari, Prosecco, soda', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Kir', descrizione: 'Crème de cassis, vino bianco secco', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Daiquiri', descrizione: 'Rum bianco, sciroppo di zucchero, lime', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Perfect Martini', descrizione: 'Vermouth rosso, Vermouth dry, Gin', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Perfect Manhattan', descrizione: 'Angostura, Vermouth rosso, Vermouth dry, Rye Whiskey, ciliegina rossa', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Kir Royal', descrizione: 'Crème de cassis, Prosecco', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Martini Spritz', descrizione: 'Martini rosso, Prosecco', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Manhattan', descrizione: 'Angostura, Vermouth rosso, Rye Whiskey, ciliegina rossa', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Negroni', descrizione: 'Vermouth rosso, Gin, Campari', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Negroni Sbagliato', descrizione: 'Vermouth rosso, Campari, Prosecco', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Old Fashioned', descrizione: 'Angostura, zucchero, Bourbon Whiskey, soda', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Screwdriver', descrizione: 'Vodka, succo d’arancia', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Vodka Martini', descrizione: 'Vodka, Vermouth dry', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Marsala 1', descrizione: 'Bitter bianco, granita di limone, succo d’arancia fresco', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Marsala 2', descrizione: 'Bitter rosso, granita di limone, succo d’arancia fresco', prezzo: 10.00 },
+      { categoria: 'prima-di-cena', nome: 'Paloma', descrizione: 'Tequila, succo di pompelmo, succo di lime', prezzo: 10.00 },
+
+      /* Dopo cena */
+      { categoria: 'dopo-cena', nome: 'Alexander', descrizione: 'Brandy, crema di cacao, crema di latte', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'Black Russian', descrizione: 'Kahlua, Vodka', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'Blow Job', descrizione: 'Amaretto, Baileys', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'B-52', descrizione: 'Kahlua, Baileys, Grand Marnier', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'Espresso Martini', descrizione: 'Vodka, Kahlua, espresso ristretto', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'French Connection', descrizione: 'Amaretto, Cognac', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'Frozen Daiquiri', descrizione: 'Rum bianco, sweet & sour', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'Good Father', descrizione: 'Disaronno, Whiskey', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'Good Mother', descrizione: 'Disaronno, Vodka', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'Grasshopper', descrizione: 'Crema di cacao, crema di menta verde, crema di latte', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'Rusty Nail', descrizione: 'Whiskey, Drambuie', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'Sidecar', descrizione: 'Succo di limone, Cointreau, Cognac', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'Stinger', descrizione: 'Crema di menta bianca, Brandy', prezzo: 10.00 },
+      { categoria: 'dopo-cena', nome: 'White Russian', descrizione: 'Vodka, Kahlua, crema di latte', prezzo: 10.00 },
+
+      /* Tutto il giorno */
+      { categoria: 'tutto-il-giorno', nome: 'Apple Martini', descrizione: 'Vodka, vodka alla mela verde, Cointreau', prezzo: 10.00 },
+      { categoria: 'tutto-il-giorno', nome: 'Blues Ice', descrizione: 'Gin, Vermouth dry, Cointreau, Grand Marnier, succo di limone, Blue Curaçao', prezzo: 10.00 },
+      { categoria: 'tutto-il-giorno', nome: 'Bronx', descrizione: 'Gin, Vermouth rosso, succo d’arancia', prezzo: 10.00 },
+      { categoria: 'tutto-il-giorno', nome: 'Cosmopolitan', descrizione: 'Vodka, succo di lime, Cointreau, succo di cranberry', prezzo: 10.00 },
+      { categoria: 'tutto-il-giorno', nome: 'Irish Coffee', descrizione: 'Irish Whiskey, zucchero di canna, caffè caldo', prezzo: 10.00 },
+      { categoria: 'tutto-il-giorno', nome: 'Kamikaze', descrizione: 'Vodka, Cointreau, succo di limone', prezzo: 10.00 },
+      { categoria: 'tutto-il-giorno', nome: 'Monkey Gland', descrizione: 'Gin, succo d’arancia, assenzio, sciroppo di granatina', prezzo: 10.00 },
+      { categoria: 'tutto-il-giorno', nome: 'Orange Blossom', descrizione: 'Gin, succo d’arancia', prezzo: 10.00 },
+      { categoria: 'tutto-il-giorno', nome: 'Paradise', descrizione: 'Gin, succo d’arancia, Apricot Brandy', prezzo: 10.00 },
+      { categoria: 'tutto-il-giorno', nome: 'White Lady', descrizione: 'Gin, Cointreau, succo di limone', prezzo: 10.00 },
+      { categoria: 'tutto-il-giorno', nome: 'Marsal di Notte', descrizione: 'Rum Havana, tè freddo, granita di limone', prezzo: 10.00 },
+
+      /* Long drinks */
+      { categoria: 'long-drinks', nome: 'Bacardi Loco', descrizione: 'Bacardi, vodka alla pesca, succo di cranberry, succo di limone', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Beach Ice Tea', descrizione: 'Rum, Vodka, Tequila, Triple Sec, succo di limone, succo di cranberry', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Bloody Mary', descrizione: 'Vodka, succo di pomodoro, succo di limone, pepe, sale', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Brave Bull', descrizione: 'Kahlua, Tequila', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Cuba Libre', descrizione: 'Rum Bacardi, succo di limone, Coca Cola', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Dark ’n’ Stormy', descrizione: 'Rum agricolo, Ginger Beer', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Gin Fizz', descrizione: 'Gin, succo di limone, sciroppo di zucchero, soda', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Gin Tonic', descrizione: 'Gin, acqua tonica', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Horse’s Neck', descrizione: 'Angostura, Brandy, Ginger Ale', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Japanese Ice Tea', descrizione: 'Vodka, Gin, Rum, succo di limone, Midori, soda', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Pornstar Martini', descrizione: 'Vodka alla vaniglia, liquore al frutto della passione, Prosecco', prezzo: 13.00 },
+      { categoria: 'long-drinks', nome: 'John Collins', descrizione: 'Angostura, sciroppo di zucchero, Gin, soda', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Long Island Iced Tea', descrizione: 'Rum, Vodka, Gin, Tequila, Triple Sec, succo di limone, Coca Cola', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Miami Ice Tea', descrizione: 'Rum, Vodka, Gin, Blue Curaçao, succo di limone, soda', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Margarita', descrizione: 'Tequila, Cointreau, succo di limone', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Mint Julep', descrizione: 'Whiskey, zucchero, menta fresca', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Moscow Mule', descrizione: 'Vodka, Ginger Beer, succo di limone', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Gin Mule', descrizione: 'Gin, Ginger Beer, succo di limone', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Montenegro Mule', descrizione: 'Montenegro, Ginger Beer, succo di limone', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Orgasm', descrizione: 'Baileys, Cointreau', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Piña Colada', descrizione: 'Rum, sciroppo di cocco, succo di ananas', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Sea Breeze', descrizione: 'Vodka, succo di mirtillo, succo di ananas', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Sex on the Beach', descrizione: 'Vodka, Peach Tree, succo di limone, soda', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Singapore Sling', descrizione: 'Gin, Cherry Brandy, succo di limone, granatina', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Tequila Sunrise', descrizione: 'Tequila, succo d’arancia, sciroppo di granatina', prezzo: 10.00 },
+      { categoria: 'long-drinks', nome: 'Sneaky Pete', descrizione: 'Whiskey, Kahlua, crema di latte', prezzo: 10.00 },
+      { categoria: 'long-drinks', gruppo: 'Long Drink alla frutta', nome: 'Long Drink analcolico', descrizione: 'Con pezzi di frutta fresca mista', prezzo: 13.00 },
+      { categoria: 'long-drinks', gruppo: 'Long Drink alla frutta', nome: 'Long Drink alcolico', descrizione: 'Con pezzi di frutta fresca mista', prezzo: 15.00 },
+
+      /* Gin tonic */
+      { categoria: 'gin-tonic', nome: 'Bulldog', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Hendrick’s', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Bombay', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Tanqueray', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Gin Mare', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Roku', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Oxley London Dry Gin', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Elephant', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Malfy Original', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Malfy Limone / Arancia / Pompelmo Rosa', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Monkey 47', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Gin Etsu Original', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Gin London n.3', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Gin Citadelle', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Gin Corricella', prezzo: 15.00 },
+      { categoria: 'gin-tonic', nome: 'Gin Costiera', prezzo: 15.00 },
+
+      /* Vodka tonic */
+      { categoria: 'vodka-tonic', nome: 'Beluga', prezzo: 15.00 },
+      { categoria: 'vodka-tonic', nome: 'Belvedere', prezzo: 15.00 },
+      { categoria: 'vodka-tonic', nome: '90 Skyy', prezzo: 15.00 },
+      { categoria: 'vodka-tonic', nome: 'Grey Goose', prezzo: 15.00 },
+
+      /* Cocktail pestati */
+      { categoria: 'pestati', nome: 'Caipirinha', descrizione: 'Cachaça, lime, zucchero di canna', prezzo: 10.00 },
+      { categoria: 'pestati', nome: 'Caipirissima', descrizione: 'Rum scuro Bacardi, lime, zucchero di canna', prezzo: 10.00 },
+      { categoria: 'pestati', nome: 'Caipiroska', descrizione: 'Lime, zucchero di canna, Vodka; gusti: melone, cocco, fragola, mela verde, passion fruit, pesca', prezzo: 10.00 },
+      { categoria: 'pestati', nome: 'Mojito', descrizione: 'Zucchero di canna, lime, menta fresca, Rum, soda', prezzo: 10.00 },
+      { categoria: 'pestati', nome: 'Mojito Che Guevara', descrizione: 'Zucchero di canna, lime, menta fresca, Rum, soda, birra', prezzo: 10.00 },
+      { categoria: 'pestati', nome: 'Black Mojito', descrizione: 'Zucchero di canna, lime, menta fresca, Montenegro', prezzo: 10.00 },
+
+      /* Cooler */
+      { categoria: 'cooler', nome: 'Cooler', descrizione: 'Gin, Rum, Tequila o Vodka, lime, zucchero di canna, Ginger Ale, fetta di arancia', prezzo: 10.00 },
+
+      /* Cocktail sparkling */
+      { categoria: 'sparkling', nome: 'Ananas Cobbler', descrizione: 'Ananas, spumante', prezzo: 10.00 },
+      { categoria: 'sparkling', nome: 'Bellini', descrizione: 'Pesca, spumante', prezzo: 10.00 },
+      { categoria: 'sparkling', nome: 'Puccini', descrizione: 'Mandarino, spumante', prezzo: 10.00 },
+      { categoria: 'sparkling', nome: 'Rossini', descrizione: 'Fragola, spumante', prezzo: 10.00 },
+
+      /* Cocktail frozen */
+      { categoria: 'frozen', nome: 'Cocktail Frozen', descrizione: 'Gusti: banana, cocco, pesca, fragola, melone, kiwi, mela verde. Rum bianco, sciroppo di zucchero, succo di lime', prezzo: 10.00 },
+
+      /* Sour’s */
+      { categoria: 'sours', nome: 'Sour’s', descrizione: 'Gusti: amaretto, Midori, Vodka, Whiskey. Succo di lime, sciroppo di zucchero', prezzo: 10.00 },
+
+      /* Birre artigianali napoletane N’Artigiana */
+      { categoria: 'birre-artigianali', nome: 'Oro', dettaglio: '4,8% vol.', descrizione: 'Lager, bassa fermentazione', varianti: [{ nome: '33 cl', prezzo: 5.50 }, { nome: 'Spina 25 cl', prezzo: 5.00 }, { nome: '50 cl', prezzo: 8.00 }] },
+      { categoria: 'birre-artigianali', nome: 'Bianca', dettaglio: '4,5% vol.', descrizione: 'Blanche, alta fermentazione', varianti: [{ nome: '33 cl', prezzo: 5.50 }] },
+      { categoria: 'birre-artigianali', nome: 'Rossa', dettaglio: '5,0% vol.', descrizione: 'Lager, bassa fermentazione', varianti: [{ nome: '33 cl', prezzo: 5.50 }] },
+      { categoria: 'birre-artigianali', nome: 'Doppio Malto', dettaglio: '7,0% vol.', descrizione: 'Strong Ale, alta fermentazione', varianti: [{ nome: '33 cl', prezzo: 5.50 }] },
+      { categoria: 'birre-artigianali', nome: 'Ambrata', dettaglio: '5,8% vol.', descrizione: 'Pale Ale, alta fermentazione', varianti: [{ nome: '33 cl', prezzo: 5.50 }] },
+      { categoria: 'birre-artigianali', nome: 'Senza Glutine', dettaglio: '4,8% vol.', descrizione: 'Lager, bassa fermentazione', varianti: [{ nome: '33 cl', prezzo: 5.50 }] },
+      { categoria: 'birre-artigianali', nome: 'Birra Analcolica', dettaglio: '< 0,5% vol.', descrizione: 'Ale, alta fermentazione', varianti: [{ nome: '33 cl', prezzo: 5.00 }] },
+
+      /* Birre in bottiglia */
+      { categoria: 'birre-bottiglia', nome: 'Tennent’s', prezzo: 7.00 },
+      { categoria: 'birre-bottiglia', nome: 'Corona', prezzo: 6.00 },
+      { categoria: 'birre-bottiglia', nome: 'Beck’s', prezzo: 6.00 },
+      { categoria: 'birre-bottiglia', nome: 'Heineken', prezzo: 6.00 },
+      { categoria: 'birre-bottiglia', nome: 'Ceres', prezzo: 6.00 },
+
+      /* Vini */
+      { categoria: 'vini', gruppo: 'Vini Bianchi', nome: 'Calice', prezzo: 6.00 },
+      { categoria: 'vini', gruppo: 'Vini Bianchi', nome: 'Pridie – Falanghina', prezzo: 25.00 },
+      { categoria: 'vini', gruppo: 'Vini Bianchi', nome: 'Veneria – Fiano di Avellino', prezzo: 25.00 },
+      { categoria: 'vini', gruppo: 'Vini Bianchi', nome: 'Veneria – Greco di Tufo', prezzo: 30.00 },
+      { categoria: 'vini', gruppo: 'Vini Bianchi', nome: 'Kurtatsch – Müller Thurgau', prezzo: 30.00 },
+      { categoria: 'vini', gruppo: 'Vini Bianchi', nome: 'Kurtatsch – Gewürztraminer Arenis', prezzo: 30.00 },
+      { categoria: 'vini', gruppo: 'Vini Bianchi', nome: 'Kurtatsch – Chardonnay', prezzo: 30.00 },
+      { categoria: 'vini', gruppo: 'Vini Rosé e Rossi', nome: 'Calice', prezzo: 6.00 },
+      { categoria: 'vini', gruppo: 'Vini Rosé e Rossi', nome: 'Pridie – Aglianico IGP', prezzo: 25.00 },
+      { categoria: 'vini', gruppo: 'Vini Rosé e Rossi', nome: 'Veneria – Primitivo di Manduria DOC', prezzo: 25.00 },
+      { categoria: 'vini', gruppo: 'Vini Rosé e Rossi', nome: 'Banfi – Chianti DOCG', prezzo: 25.00 },
+      { categoria: 'vini', gruppo: 'Vini Rosé e Rossi', nome: 'Moio 57', prezzo: 30.00 },
+      { categoria: 'vini', gruppo: 'Vini Rosé e Rossi', nome: 'Kurtatsch – Pinosè Rosé', prezzo: 30.00 },
+      { categoria: 'vini', gruppo: 'Bollicine', nome: 'Deff’ – Gajeco DOC Prosecco (calice)', prezzo: 6.00 },
+      { categoria: 'vini', gruppo: 'Bollicine', nome: 'Deff’ – Gajeco DOC Prosecco (bottiglia)', prezzo: 35.00 },
+      { categoria: 'vini', gruppo: 'Bollicine', nome: 'Veuve Clicquot', prezzo: 100.00 },
+      { categoria: 'vini', gruppo: 'Bollicine', nome: 'Moët & Chandon Imperial', prezzo: 90.00 },
+      { categoria: 'vini', gruppo: 'Bollicine', nome: 'Ferrari Maximum', prezzo: 50.00 },
+      { categoria: 'vini', gruppo: 'Bollicine', nome: 'Moët & Chandon Ice Imperial', prezzo: 130.00 },
+      { categoria: 'vini', gruppo: 'Bollicine', nome: 'Ca’ del Bosco', prezzo: 80.00 },
+      { categoria: 'vini', gruppo: 'Bollicine', nome: 'Berlucchi 61 Franciacorta', prezzo: 60.00 },
+      { categoria: 'vini', gruppo: 'Bollicine', nome: 'Dom Pérignon', prezzo: 300.00 },
+
+      /* Distillati */
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Glen Grant', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Southern Comfort Bourbon', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Four Roses', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'J&B', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Ballantine’s Scotch Whisky', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Lagavulin 16 anni', prezzo: 12.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Oban 14 anni', prezzo: 12.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Jameson Limited Edition', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Johnnie Walker Red Label 40%', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Johnnie Walker Black Label', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Jack Daniel’s Old n.7', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Jim Beam 40%', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Whisky', nome: 'Nikka', prezzo: 12.00 },
+      { categoria: 'distillati', gruppo: 'Rum', nome: 'Havana Club 7 anni', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Rum', nome: 'Zacapa Solera 23 anni', prezzo: 15.00 },
+      { categoria: 'distillati', gruppo: 'Rum', nome: 'Don Papa Baroko Limited Edition', prezzo: 12.00 },
+      { categoria: 'distillati', gruppo: 'Rum', nome: 'Diplomatico Mantuano', prezzo: 12.00 },
+      { categoria: 'distillati', gruppo: 'Rum', nome: 'Ron Barceló', prezzo: 12.00 },
+      { categoria: 'distillati', gruppo: 'Rum', nome: 'Anniversario', prezzo: 12.00 },
+      { categoria: 'distillati', gruppo: 'Rum', nome: 'Matusalem 15 anni', prezzo: 12.00 },
+      { categoria: 'distillati', gruppo: 'Cognac & Brandy', nome: 'Rémy Martin Cognac', prezzo: 10.00 },
+      { categoria: 'distillati', gruppo: 'Cognac & Brandy', nome: 'Martell Cognac', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Cognac & Brandy', nome: 'Courvoisier Cognac', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Cognac & Brandy', nome: 'Calvados', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Cognac & Brandy', nome: 'Vecchia Romagna Brandy', prezzo: 8.00 },
+      { categoria: 'distillati', gruppo: 'Cognac & Brandy', nome: 'Cognac alle Pere', prezzo: 8.00 },
+
+      /* Digestivi */
+      { categoria: 'digestivi', nome: 'Amari', prezzo: 6.00 },
+      { categoria: 'digestivi', nome: 'Grappa bianca', prezzo: 7.00 },
+      { categoria: 'digestivi', nome: 'Jefferson', prezzo: 9.00 },
+      { categoria: 'digestivi', nome: 'Grappa barricata', prezzo: 8.00 },
+
+      /* Aperitivi */
+      { categoria: 'aperitivi', nome: 'Campari Soda', prezzo: 6.00 },
+      { categoria: 'aperitivi', nome: 'Bitter Bianco / Rosso', prezzo: 6.00 },
+      { categoria: 'aperitivi', nome: 'Aperol / Bitter Campari', prezzo: 6.00 },
+      { categoria: 'aperitivi', nome: 'Crodino', prezzo: 6.00 },
+      { categoria: 'aperitivi', nome: 'San Pellegrino Bianco', prezzo: 6.00 },
+
+      /* Toast */
+      { categoria: 'toast', nome: 'Toast Classico', descrizione: 'Prosciutto cotto e formaggio filante', prezzo: 6.00 },
+      { categoria: 'toast', nome: 'Toast Primavera', descrizione: 'Prosciutto cotto, formaggio filante e insalata', prezzo: 8.00 },
+
+      /* Crostoni */
+      { categoria: 'crostoni', nome: 'Crostone', descrizione: 'Prosciutto crudo e mozzarella', prezzo: 6.00 },
+      { categoria: 'crostoni', nome: 'Zingara', descrizione: 'Prosciutto crudo, mozzarella, pomodoro e insalata', prezzo: 8.00 },
+
+      /* Bruschettone */
+      { categoria: 'bruschettone', nome: 'Bruschettone del Golfo', descrizione: 'Tonno, olive, cipollina', prezzo: 7.00 },
+      { categoria: 'bruschettone', nome: 'Bruschettone Caprese', descrizione: 'Mozzarella, pomodorino, basilico', prezzo: 8.00 },
+      { categoria: 'bruschettone', nome: 'Bruschettone Pomodoro & Basilico', descrizione: 'Pomodoro, aglio, basilico', prezzo: 6.00 },
+      { categoria: 'bruschettone', nome: 'Bruschettone Ortolano', descrizione: 'Melanzane grigliate, mozzarella', prezzo: 8.00 },
+      { categoria: 'bruschettone', nome: 'Bruschettone Mediterraneo', descrizione: 'Pomodorino, mozzarella, rucola e origano', prezzo: 8.00 },
+
+      /* Secondi al piatto */
+      { categoria: 'secondi', nome: 'Mozzarella', prezzo: 6.00 },
+      { categoria: 'secondi', nome: 'Petto di pollo alla piastra', prezzo: 10.00 },
+      { categoria: 'secondi', nome: 'Tagliata di pollo', descrizione: 'Con rucola e pomodorini', prezzo: 13.00 },
+
+      /* Saltimbocca */
+      { categoria: 'saltimbocca', nome: 'Saltimbocca', descrizione: 'Prosciutto crudo e mozzarella', prezzo: 6.00 },
+      { categoria: 'saltimbocca', nome: 'Saltimbocca', descrizione: 'Prosciutto crudo, mozzarella, pomodoro e insalata', prezzo: 8.00 },
+      { categoria: 'saltimbocca', nome: 'Saltimbocca', descrizione: 'Prosciutto cotto e mozzarella', prezzo: 6.00 },
+      { categoria: 'saltimbocca', nome: 'Saltimbocca', descrizione: 'Prosciutto cotto, mozzarella, pomodoro e insalata', prezzo: 8.00 },
+
+      /* Insalatone */
+      { categoria: 'insalatone', nome: 'L’arrostita', descrizione: 'Insalata, pomodorini, mais, rucola, petto di pollo grill', prezzo: 15.00 },
+      { categoria: 'insalatone', nome: 'La Vegetariana', descrizione: 'Insalata, pomodorini, rucola, mais e verdure grigliate', prezzo: 13.00 },
+      { categoria: 'insalatone', nome: 'La Caprese', descrizione: 'Pomodoro e mozzarella di bufala', prezzo: 10.00 },
+      { categoria: 'insalatone', nome: 'La Tonnarella', descrizione: 'Insalata, rucola, mais, pomodorini, tonno e olive', prezzo: 13.00 },
+      { categoria: 'insalatone', nome: 'Caesar Salad', descrizione: 'Insalata, petto di pollo, parmigiano, crostini di pane e salad cream', prezzo: 13.00 },
+      { categoria: 'insalatone', nome: 'Caponata', descrizione: 'Fresella, tonno, pomodorini, olive, basilico', prezzo: 10.00 },
+
+      /* Dolci */
+      { categoria: 'dolci', nome: 'Delizia al Limone', prezzo: 6.00 },
+      { categoria: 'dolci', nome: 'Cheesecake', descrizione: 'Frutti di bosco / cioccolato / pistacchio / caramello', prezzo: 6.00 },
+      { categoria: 'dolci', nome: 'Tiramisù', prezzo: 6.00 },
+      { categoria: 'dolci', nome: 'Mousse al Cioccolato', prezzo: 6.00 },
+      { categoria: 'dolci', nome: 'Tortino con cuore caldo', prezzo: 6.00 },
+      { categoria: 'dolci', nome: 'Mandorlato', prezzo: 6.00 },
+      { categoria: 'dolci', nome: 'Dolce del giorno', prezzo: 6.00 },
+      { categoria: 'dolci', nome: 'Red Velvet', prezzo: 6.00 },
+
+      /* Caffè e bevande calde */
+      { categoria: 'caffe', nome: 'Caffè caldo', prezzo: 3.00 },
+      { categoria: 'caffe', nome: 'Caffè caldo Nocciola', prezzo: 3.50 },
+      { categoria: 'caffe', nome: 'Caffè Hag', descrizione: 'Decaffeinato', prezzo: 3.00 },
+      { categoria: 'caffe', nome: 'Caffè Ginseng', prezzo: 3.00 },
+      { categoria: 'caffe', nome: 'Orzo', prezzo: 3.50 },
+      { categoria: 'caffe', nome: 'Caffè Brasiliano', prezzo: 4.00 },
+      { categoria: 'caffe', nome: 'Caffè Americano', prezzo: 4.00 },
+      { categoria: 'caffe', nome: 'Caffè del Nonno', prezzo: 5.00 },
+      { categoria: 'caffe', nome: 'Caffè del Nonno', descrizione: 'Nocciola o Baileys', prezzo: 5.50 },
+      { categoria: 'caffe', nome: 'Caffè freddo', prezzo: 3.50 },
+      { categoria: 'caffe', nome: 'Cappuccino', prezzo: 4.00 },
+      { categoria: 'caffe', nome: 'Cioccolata calda', prezzo: 5.00 },
+      { categoria: 'caffe', nome: 'Latte bianco', prezzo: 3.00 },
+      { categoria: 'caffe', nome: 'Latte macchiato', prezzo: 4.00 },
+      { categoria: 'caffe', nome: 'Tè caldo', prezzo: 4.00 },
+      { categoria: 'caffe', nome: 'Camomilla', prezzo: 4.00 },
+
+      /* Succhi e spremute */
+      { categoria: 'succhi', nome: 'Spremuta di arancia', descrizione: 'Fresca', prezzo: 5.00 },
+      { categoria: 'succhi', nome: 'Spremuta di limone', descrizione: 'Fresca', prezzo: 5.00 },
+      { categoria: 'succhi', nome: 'Santal succo di frutta', descrizione: '25 cl – pesca, pera, albicocca, ACE, ananas, pompelmo, mirtillo, pomodoro', prezzo: 5.00 },
+
+      /* Bibite */
+      { categoria: 'bibite', nome: 'Acqua piccola', prezzo: 2.00 },
+      { categoria: 'bibite', nome: 'Acqua grande', prezzo: 3.00 },
+      { categoria: 'bibite', nome: 'Coca-Cola', prezzo: 5.00 },
+      { categoria: 'bibite', nome: 'Coca-Cola Zero', prezzo: 5.00 },
+      { categoria: 'bibite', nome: 'Chinotto', prezzo: 5.00 },
+      { categoria: 'bibite', nome: 'Sprite', prezzo: 5.00 },
+      { categoria: 'bibite', nome: 'Aranciata', prezzo: 5.00 },
+      { categoria: 'bibite', nome: 'Lemonsoda', prezzo: 5.00 },
+      { categoria: 'bibite', nome: 'Tassoni', prezzo: 5.00 },
+      { categoria: 'bibite', nome: 'Fever Tree', descrizione: 'Tonic water / Lemon Tonic / Pink Grapefruit', prezzo: 6.00 },
+      { categoria: 'bibite', nome: 'Red Bull', prezzo: 5.00 },
+      { categoria: 'bibite', nome: 'Schweppes', descrizione: 'Tonica, limone, arancia', prezzo: 5.00 },
+      { categoria: 'bibite', nome: 'Ginger Ale', prezzo: 5.00 },
+      { categoria: 'bibite', nome: 'Ginger Beer', prezzo: 5.00 },
+
+      /* Granite */
+      { categoria: 'granite', nome: 'Granite', descrizione: 'Limone, fragola', prezzo: 5.00 },
+
+      /* Gelateria */
+      { categoria: 'gelateria', nome: 'Coppa gelato piccola', descrizione: 'Mix crema, mix frutta', prezzo: 6.00 },
+      { categoria: 'gelateria', nome: 'Coppa gelato grande', descrizione: 'Mix crema, mix frutta', prezzo: 8.00 },
+      { categoria: 'gelateria', nome: 'Coppa gelato', descrizione: 'Affogato al caffè', prezzo: 9.00 },
+      { categoria: 'gelateria', nome: 'Tagliata di frutta', prezzo: 13.00 },
+      { categoria: 'gelateria', nome: 'Cocco Split', prezzo: 12.00 },
+      { categoria: 'gelateria', nome: 'Ananas Split', prezzo: 12.00 },
+      { categoria: 'gelateria', nome: 'Kiwi Split', prezzo: 12.00 },
+      { categoria: 'gelateria', nome: 'Banana Split', prezzo: 12.00 },
+
+      /* Antica gelateria */
+      { categoria: 'antica-gelateria', nome: 'Cocco', prezzo: 6.00 },
+      { categoria: 'antica-gelateria', nome: 'Limone', prezzo: 6.00 },
+      { categoria: 'antica-gelateria', nome: 'Tartufo bianco / Cacao', prezzo: 6.00 },
+
+      /* Frullati & frappè */
+      { categoria: 'frullati', nome: 'Frullati', prezzo: 7.00 },
+      { categoria: 'frullati', nome: 'Frappè', prezzo: 7.00 },
+
+      /* Pasticceria & rosticceria */
+      { categoria: 'pasticceria', nome: 'Cornetto', prezzo: 2.00 },
+      { categoria: 'pasticceria', nome: 'Sfogliata riccia o frolla', prezzo: 2.50 },
+      { categoria: 'pasticceria', nome: 'Pizza Margherita o Marinara', prezzo: 2.50 },
+      { categoria: 'pasticceria', nome: 'Panino Hot Dog', prezzo: 3.00 },
+      { categoria: 'pasticceria', nome: 'Pizza farcita', prezzo: 3.50 },
+      { categoria: 'pasticceria', nome: 'Panino Napoletano', prezzo: 3.50 }
+    ];
+
+    /* ---------------------------------------------------------
+       7) LINGUE E TRADUZIONI
+       Queste lingue compaiono nella schermata di benvenuto e nel
+       mappamondo in alto. Finché il cliente non sceglie, la pagina
+       usa la lingua del telefono, se è tra queste.
+       Ogni riga: 'testo italiano': ['inglese', 'francese', 'spagnolo', 'tedesco']
+       Se cambi o aggiungi un testo italiano senza traduzione,
+       nelle altre lingue compare in italiano.
+       --------------------------------------------------------- */
+    const LINGUE = [
+      { codice: 'it', nome: 'Italiano' },
+      { codice: 'en', nome: 'English' },
+      { codice: 'fr', nome: 'Français' },
+      { codice: 'es', nome: 'Español' },
+      { codice: 'de', nome: 'Deutsch' }
+    ];
+    const TRADUZIONI = {
+      'Scegli tra Apertass e Aperol Spritz': ['Choose between Apertass and Aperol Spritz', 'Au choix : Apertass ou Aperol Spritz', 'Elige entre Apertass y Aperol Spritz', 'Wahl zwischen Apertass und Aperol Spritz'],
+      'Aperol, Tassoni, granita di limone': ['Aperol, Tassoni, lemon granita', 'Aperol, Tassoni, granité au citron', 'Aperol, Tassoni, granizado de limón', 'Aperol, Tassoni, Zitronengranita'],
+      'Aperol, Prosecco, soda': ['Aperol, Prosecco, soda', 'Aperol, Prosecco, soda', 'Aperol, Prosecco, soda', 'Aperol, Prosecco, Soda'],
+      'Vermouth rosso, Bitter Campari, soda': ['Red vermouth, Bitter Campari, soda', 'Vermouth rouge, Bitter Campari, soda', 'Vermut rojo, Bitter Campari, soda', 'Roter Wermut, Bitter Campari, Soda'],
+      'Crema di banana, succo di limone, Rum Bacardi': ['Crème de banane, lemon juice, Bacardi rum', 'Crème de banane, jus de citron, rhum Bacardi', 'Crema de plátano, zumo de limón, ron Bacardi', 'Bananenlikör, Zitronensaft, Bacardi-Rum'],
+      'Bitter Campari, succo d’arancia': ['Bitter Campari, orange juice', 'Bitter Campari, jus d’orange', 'Bitter Campari, zumo de naranja', 'Bitter Campari, Orangensaft'],
+      'Whiskey, Vermouth rosso, Campari': ['Whiskey, red vermouth, Campari', 'Whiskey, vermouth rouge, Campari', 'Whiskey, vermut rojo, Campari', 'Whiskey, roter Wermut, Campari'],
+      'Gin, Vermouth dry': ['Gin, dry vermouth', 'Gin, vermouth dry', 'Gin, vermut seco', 'Gin, trockener Wermut'],
+      'Campari, Prosecco, soda': ['Campari, Prosecco, soda', 'Campari, Prosecco, soda', 'Campari, Prosecco, soda', 'Campari, Prosecco, Soda'],
+      'Crème de cassis, vino bianco secco': ['Crème de cassis, dry white wine', 'Crème de cassis, vin blanc sec', 'Crema de cassis, vino blanco seco', 'Crème de Cassis, trockener Weißwein'],
+      'Rum bianco, sciroppo di zucchero, lime': ['White rum, sugar syrup, lime', 'Rhum blanc, sirop de sucre, citron vert', 'Ron blanco, sirope de azúcar, lima', 'Weißer Rum, Zuckersirup, Limette'],
+      'Vermouth rosso, Vermouth dry, Gin': ['Red vermouth, dry vermouth, Gin', 'Vermouth rouge, vermouth dry, Gin', 'Vermut rojo, vermut seco, Gin', 'Roter Wermut, trockener Wermut, Gin'],
+      'Angostura, Vermouth rosso, Vermouth dry, Rye Whiskey, ciliegina rossa': ['Angostura, red vermouth, dry vermouth, Rye Whiskey, cocktail cherry', 'Angostura, vermouth rouge, vermouth dry, Rye Whiskey, cerise rouge', 'Angostura, vermut rojo, vermut seco, Rye Whiskey, guinda roja', 'Angostura, roter Wermut, trockener Wermut, Rye Whiskey, Cocktailkirsche'],
+      'Crème de cassis, Prosecco': ['Crème de cassis, Prosecco', 'Crème de cassis, Prosecco', 'Crema de cassis, Prosecco', 'Crème de Cassis, Prosecco'],
+      'Martini rosso, Prosecco': ['Martini rosso, Prosecco', 'Martini rosso, Prosecco', 'Martini rosso, Prosecco', 'Martini rosso, Prosecco'],
+      'Angostura, Vermouth rosso, Rye Whiskey, ciliegina rossa': ['Angostura, red vermouth, Rye Whiskey, cocktail cherry', 'Angostura, vermouth rouge, Rye Whiskey, cerise rouge', 'Angostura, vermut rojo, Rye Whiskey, guinda roja', 'Angostura, roter Wermut, Rye Whiskey, Cocktailkirsche'],
+      'Vermouth rosso, Gin, Campari': ['Red vermouth, Gin, Campari', 'Vermouth rouge, Gin, Campari', 'Vermut rojo, Gin, Campari', 'Roter Wermut, Gin, Campari'],
+      'Vermouth rosso, Campari, Prosecco': ['Red vermouth, Campari, Prosecco', 'Vermouth rouge, Campari, Prosecco', 'Vermut rojo, Campari, Prosecco', 'Roter Wermut, Campari, Prosecco'],
+      'Angostura, zucchero, Bourbon Whiskey, soda': ['Angostura, sugar, Bourbon Whiskey, soda', 'Angostura, sucre, Bourbon Whiskey, soda', 'Angostura, azúcar, Bourbon Whiskey, soda', 'Angostura, Zucker, Bourbon Whiskey, Soda'],
+      'Vodka, succo d’arancia': ['Vodka, orange juice', 'Vodka, jus d’orange', 'Vodka, zumo de naranja', 'Wodka, Orangensaft'],
+      'Vodka, Vermouth dry': ['Vodka, dry vermouth', 'Vodka, vermouth dry', 'Vodka, vermut seco', 'Wodka, trockener Wermut'],
+      'Bitter bianco, granita di limone, succo d’arancia fresco': ['White bitter, lemon granita, fresh orange juice', 'Bitter blanc, granité au citron, jus d’orange frais', 'Bitter blanco, granizado de limón, zumo de naranja natural', 'Weißer Bitter, Zitronengranita, frischer Orangensaft'],
+      'Bitter rosso, granita di limone, succo d’arancia fresco': ['Red bitter, lemon granita, fresh orange juice', 'Bitter rouge, granité au citron, jus d’orange frais', 'Bitter rojo, granizado de limón, zumo de naranja natural', 'Roter Bitter, Zitronengranita, frischer Orangensaft'],
+      'Tequila, succo di pompelmo, succo di lime': ['Tequila, grapefruit juice, lime juice', 'Tequila, jus de pamplemousse, jus de citron vert', 'Tequila, zumo de pomelo, zumo de lima', 'Tequila, Grapefruitsaft, Limettensaft'],
+      'Brandy, crema di cacao, crema di latte': ['Brandy, crème de cacao, cream', 'Brandy, crème de cacao, crème liquide', 'Brandy, crema de cacao, nata', 'Brandy, Kakaolikör, Sahne'],
+      'Kahlua, Vodka': ['Kahlua, Vodka', 'Kahlua, Vodka', 'Kahlua, Vodka', 'Kahlua, Wodka'],
+      'Amaretto, Baileys': ['Amaretto, Baileys', 'Amaretto, Baileys', 'Amaretto, Baileys', 'Amaretto, Baileys'],
+      'Kahlua, Baileys, Grand Marnier': ['Kahlua, Baileys, Grand Marnier', 'Kahlua, Baileys, Grand Marnier', 'Kahlua, Baileys, Grand Marnier', 'Kahlua, Baileys, Grand Marnier'],
+      'Vodka, Kahlua, espresso ristretto': ['Vodka, Kahlua, ristretto espresso', 'Vodka, Kahlua, expresso serré', 'Vodka, Kahlua, espresso ristretto', 'Wodka, Kahlua, Ristretto'],
+      'Amaretto, Cognac': ['Amaretto, Cognac', 'Amaretto, Cognac', 'Amaretto, Cognac', 'Amaretto, Cognac'],
+      'Rum bianco, sweet & sour': ['White rum, sweet & sour', 'Rhum blanc, sweet & sour', 'Ron blanco, sweet & sour', 'Weißer Rum, sweet & sour'],
+      'Disaronno, Whiskey': ['Disaronno, Whiskey', 'Disaronno, Whiskey', 'Disaronno, Whiskey', 'Disaronno, Whiskey'],
+      'Disaronno, Vodka': ['Disaronno, Vodka', 'Disaronno, Vodka', 'Disaronno, Vodka', 'Disaronno, Wodka'],
+      'Crema di cacao, crema di menta verde, crema di latte': ['Crème de cacao, green crème de menthe, cream', 'Crème de cacao, crème de menthe verte, crème liquide', 'Crema de cacao, crema de menta verde, nata', 'Kakaolikör, grüner Pfefferminzlikör, Sahne'],
+      'Whiskey, Drambuie': ['Whiskey, Drambuie', 'Whiskey, Drambuie', 'Whiskey, Drambuie', 'Whiskey, Drambuie'],
+      'Succo di limone, Cointreau, Cognac': ['Lemon juice, Cointreau, Cognac', 'Jus de citron, Cointreau, Cognac', 'Zumo de limón, Cointreau, Cognac', 'Zitronensaft, Cointreau, Cognac'],
+      'Crema di menta bianca, Brandy': ['White crème de menthe, Brandy', 'Crème de menthe blanche, Brandy', 'Crema de menta blanca, Brandy', 'Weißer Pfefferminzlikör, Brandy'],
+      'Vodka, Kahlua, crema di latte': ['Vodka, Kahlua, cream', 'Vodka, Kahlua, crème liquide', 'Vodka, Kahlua, nata', 'Wodka, Kahlua, Sahne'],
+      'Vodka, vodka alla mela verde, Cointreau': ['Vodka, green apple vodka, Cointreau', 'Vodka, vodka à la pomme verte, Cointreau', 'Vodka, vodka de manzana verde, Cointreau', 'Wodka, Wodka mit grünem Apfel, Cointreau'],
+      'Gin, Vermouth dry, Cointreau, Grand Marnier, succo di limone, Blue Curaçao': ['Gin, dry vermouth, Cointreau, Grand Marnier, lemon juice, Blue Curaçao', 'Gin, vermouth dry, Cointreau, Grand Marnier, jus de citron, Blue Curaçao', 'Gin, vermut seco, Cointreau, Grand Marnier, zumo de limón, Blue Curaçao', 'Gin, trockener Wermut, Cointreau, Grand Marnier, Zitronensaft, Blue Curaçao'],
+      'Gin, Vermouth rosso, succo d’arancia': ['Gin, red vermouth, orange juice', 'Gin, vermouth rouge, jus d’orange', 'Gin, vermut rojo, zumo de naranja', 'Gin, roter Wermut, Orangensaft'],
+      'Vodka, succo di lime, Cointreau, succo di cranberry': ['Vodka, lime juice, Cointreau, cranberry juice', 'Vodka, jus de citron vert, Cointreau, jus de cranberry', 'Vodka, zumo de lima, Cointreau, zumo de arándano rojo', 'Wodka, Limettensaft, Cointreau, Cranberrysaft'],
+      'Irish Whiskey, zucchero di canna, caffè caldo': ['Irish Whiskey, cane sugar, hot coffee', 'Irish Whiskey, sucre de canne, café chaud', 'Irish Whiskey, azúcar de caña, café caliente', 'Irish Whiskey, Rohrzucker, heißer Kaffee'],
+      'Vodka, Cointreau, succo di limone': ['Vodka, Cointreau, lemon juice', 'Vodka, Cointreau, jus de citron', 'Vodka, Cointreau, zumo de limón', 'Wodka, Cointreau, Zitronensaft'],
+      'Gin, succo d’arancia, assenzio, sciroppo di granatina': ['Gin, orange juice, absinthe, grenadine syrup', 'Gin, jus d’orange, absinthe, sirop de grenadine', 'Gin, zumo de naranja, absenta, sirope de granadina', 'Gin, Orangensaft, Absinth, Grenadinesirup'],
+      'Gin, succo d’arancia': ['Gin, orange juice', 'Gin, jus d’orange', 'Gin, zumo de naranja', 'Gin, Orangensaft'],
+      'Gin, succo d’arancia, Apricot Brandy': ['Gin, orange juice, Apricot Brandy', 'Gin, jus d’orange, Apricot Brandy', 'Gin, zumo de naranja, Apricot Brandy', 'Gin, Orangensaft, Apricot Brandy'],
+      'Gin, Cointreau, succo di limone': ['Gin, Cointreau, lemon juice', 'Gin, Cointreau, jus de citron', 'Gin, Cointreau, zumo de limón', 'Gin, Cointreau, Zitronensaft'],
+      'Rum Havana, tè freddo, granita di limone': ['Havana rum, iced tea, lemon granita', 'Rhum Havana, thé glacé, granité au citron', 'Ron Havana, té frío, granizado de limón', 'Havana-Rum, Eistee, Zitronengranita'],
+      'Bacardi, vodka alla pesca, succo di cranberry, succo di limone': ['Bacardi, peach vodka, cranberry juice, lemon juice', 'Bacardi, vodka à la pêche, jus de cranberry, jus de citron', 'Bacardi, vodka de melocotón, zumo de arándano rojo, zumo de limón', 'Bacardi, Pfirsichwodka, Cranberrysaft, Zitronensaft'],
+      'Rum, Vodka, Tequila, Triple Sec, succo di limone, succo di cranberry': ['Rum, Vodka, Tequila, Triple Sec, lemon juice, cranberry juice', 'Rhum, Vodka, Tequila, Triple Sec, jus de citron, jus de cranberry', 'Ron, Vodka, Tequila, Triple Sec, zumo de limón, zumo de arándano rojo', 'Rum, Wodka, Tequila, Triple Sec, Zitronensaft, Cranberrysaft'],
+      'Vodka, succo di pomodoro, succo di limone, pepe, sale': ['Vodka, tomato juice, lemon juice, pepper, salt', 'Vodka, jus de tomate, jus de citron, poivre, sel', 'Vodka, zumo de tomate, zumo de limón, pimienta, sal', 'Wodka, Tomatensaft, Zitronensaft, Pfeffer, Salz'],
+      'Kahlua, Tequila': ['Kahlua, Tequila', 'Kahlua, Tequila', 'Kahlua, Tequila', 'Kahlua, Tequila'],
+      'Rum Bacardi, succo di limone, Coca Cola': ['Bacardi rum, lemon juice, Coca Cola', 'Rhum Bacardi, jus de citron, Coca Cola', 'Ron Bacardi, zumo de limón, Coca Cola', 'Bacardi-Rum, Zitronensaft, Coca Cola'],
+      'Rum agricolo, Ginger Beer': ['Agricole rum, Ginger Beer', 'Rhum agricole, Ginger Beer', 'Ron agrícola, Ginger Beer', 'Rhum Agricole, Ginger Beer'],
+      'Gin, succo di limone, sciroppo di zucchero, soda': ['Gin, lemon juice, sugar syrup, soda', 'Gin, jus de citron, sirop de sucre, soda', 'Gin, zumo de limón, sirope de azúcar, soda', 'Gin, Zitronensaft, Zuckersirup, Soda'],
+      'Gin, acqua tonica': ['Gin, tonic water', 'Gin, eau tonique', 'Gin, agua tónica', 'Gin, Tonic Water'],
+      'Angostura, Brandy, Ginger Ale': ['Angostura, Brandy, Ginger Ale', 'Angostura, Brandy, Ginger Ale', 'Angostura, Brandy, Ginger Ale', 'Angostura, Brandy, Ginger Ale'],
+      'Vodka, Gin, Rum, succo di limone, Midori, soda': ['Vodka, Gin, Rum, lemon juice, Midori, soda', 'Vodka, Gin, Rhum, jus de citron, Midori, soda', 'Vodka, Gin, Ron, zumo de limón, Midori, soda', 'Wodka, Gin, Rum, Zitronensaft, Midori, Soda'],
+      'Vodka alla vaniglia, liquore al frutto della passione, Prosecco': ['Vanilla vodka, passion fruit liqueur, Prosecco', 'Vodka à la vanille, liqueur de fruit de la passion, Prosecco', 'Vodka de vainilla, licor de maracuyá, Prosecco', 'Vanillewodka, Maracujalikör, Prosecco'],
+      'Angostura, sciroppo di zucchero, Gin, soda': ['Angostura, sugar syrup, Gin, soda', 'Angostura, sirop de sucre, Gin, soda', 'Angostura, sirope de azúcar, Gin, soda', 'Angostura, Zuckersirup, Gin, Soda'],
+      'Rum, Vodka, Gin, Tequila, Triple Sec, succo di limone, Coca Cola': ['Rum, Vodka, Gin, Tequila, Triple Sec, lemon juice, Coca Cola', 'Rhum, Vodka, Gin, Tequila, Triple Sec, jus de citron, Coca Cola', 'Ron, Vodka, Gin, Tequila, Triple Sec, zumo de limón, Coca Cola', 'Rum, Wodka, Gin, Tequila, Triple Sec, Zitronensaft, Coca Cola'],
+      'Rum, Vodka, Gin, Blue Curaçao, succo di limone, soda': ['Rum, Vodka, Gin, Blue Curaçao, lemon juice, soda', 'Rhum, Vodka, Gin, Blue Curaçao, jus de citron, soda', 'Ron, Vodka, Gin, Blue Curaçao, zumo de limón, soda', 'Rum, Wodka, Gin, Blue Curaçao, Zitronensaft, Soda'],
+      'Tequila, Cointreau, succo di limone': ['Tequila, Cointreau, lemon juice', 'Tequila, Cointreau, jus de citron', 'Tequila, Cointreau, zumo de limón', 'Tequila, Cointreau, Zitronensaft'],
+      'Whiskey, zucchero, menta fresca': ['Whiskey, sugar, fresh mint', 'Whiskey, sucre, menthe fraîche', 'Whiskey, azúcar, menta fresca', 'Whiskey, Zucker, frische Minze'],
+      'Vodka, Ginger Beer, succo di limone': ['Vodka, Ginger Beer, lemon juice', 'Vodka, Ginger Beer, jus de citron', 'Vodka, Ginger Beer, zumo de limón', 'Wodka, Ginger Beer, Zitronensaft'],
+      'Gin, Ginger Beer, succo di limone': ['Gin, Ginger Beer, lemon juice', 'Gin, Ginger Beer, jus de citron', 'Gin, Ginger Beer, zumo de limón', 'Gin, Ginger Beer, Zitronensaft'],
+      'Montenegro, Ginger Beer, succo di limone': ['Montenegro, Ginger Beer, lemon juice', 'Montenegro, Ginger Beer, jus de citron', 'Montenegro, Ginger Beer, zumo de limón', 'Montenegro, Ginger Beer, Zitronensaft'],
+      'Baileys, Cointreau': ['Baileys, Cointreau', 'Baileys, Cointreau', 'Baileys, Cointreau', 'Baileys, Cointreau'],
+      'Rum, sciroppo di cocco, succo di ananas': ['Rum, coconut syrup, pineapple juice', 'Rhum, sirop de coco, jus d’ananas', 'Ron, sirope de coco, zumo de piña', 'Rum, Kokossirup, Ananassaft'],
+      'Vodka, succo di mirtillo, succo di ananas': ['Vodka, blueberry juice, pineapple juice', 'Vodka, jus de myrtille, jus d’ananas', 'Vodka, zumo de arándanos, zumo de piña', 'Wodka, Heidelbeersaft, Ananassaft'],
+      'Vodka, Peach Tree, succo di limone, soda': ['Vodka, Peach Tree, lemon juice, soda', 'Vodka, Peach Tree, jus de citron, soda', 'Vodka, Peach Tree, zumo de limón, soda', 'Wodka, Peach Tree, Zitronensaft, Soda'],
+      'Gin, Cherry Brandy, succo di limone, granatina': ['Gin, Cherry Brandy, lemon juice, grenadine', 'Gin, Cherry Brandy, jus de citron, grenadine', 'Gin, Cherry Brandy, zumo de limón, granadina', 'Gin, Cherry Brandy, Zitronensaft, Grenadine'],
+      'Tequila, succo d’arancia, sciroppo di granatina': ['Tequila, orange juice, grenadine syrup', 'Tequila, jus d’orange, sirop de grenadine', 'Tequila, zumo de naranja, sirope de granadina', 'Tequila, Orangensaft, Grenadinesirup'],
+      'Whiskey, Kahlua, crema di latte': ['Whiskey, Kahlua, cream', 'Whiskey, Kahlua, crème liquide', 'Whiskey, Kahlua, nata', 'Whiskey, Kahlua, Sahne'],
+      'Con pezzi di frutta fresca mista': ['With pieces of mixed fresh fruit', 'Avec des morceaux de fruits frais variés', 'Con trozos de fruta fresca variada', 'Mit Stücken von frischem, gemischtem Obst'],
+      'Cachaça, lime, zucchero di canna': ['Cachaça, lime, cane sugar', 'Cachaça, citron vert, sucre de canne', 'Cachaça, lima, azúcar de caña', 'Cachaça, Limette, Rohrzucker'],
+      'Rum scuro Bacardi, lime, zucchero di canna': ['Bacardi dark rum, lime, cane sugar', 'Rhum ambré Bacardi, citron vert, sucre de canne', 'Ron oscuro Bacardi, lima, azúcar de caña', 'Dunkler Bacardi-Rum, Limette, Rohrzucker'],
+      'Lime, zucchero di canna, Vodka; gusti: melone, cocco, fragola, mela verde, passion fruit, pesca': ['Lime, cane sugar, vodka; flavours: melon, coconut, strawberry, green apple, passion fruit, peach', 'Citron vert, sucre de canne, vodka ; parfums : melon, noix de coco, fraise, pomme verte, fruit de la passion, pêche', 'Lima, azúcar de caña, vodka; sabores: melón, coco, fresa, manzana verde, maracuyá, melocotón', 'Limette, Rohrzucker, Wodka; Sorten: Melone, Kokos, Erdbeere, grüner Apfel, Maracuja, Pfirsich'],
+      'Zucchero di canna, lime, menta fresca, Rum, soda': ['Cane sugar, lime, fresh mint, Rum, soda', 'Sucre de canne, citron vert, menthe fraîche, Rhum, soda', 'Azúcar de caña, lima, menta fresca, Ron, soda', 'Rohrzucker, Limette, frische Minze, Rum, Soda'],
+      'Zucchero di canna, lime, menta fresca, Rum, soda, birra': ['Cane sugar, lime, fresh mint, Rum, soda, beer', 'Sucre de canne, citron vert, menthe fraîche, Rhum, soda, bière', 'Azúcar de caña, lima, menta fresca, Ron, soda, cerveza', 'Rohrzucker, Limette, frische Minze, Rum, Soda, Bier'],
+      'Zucchero di canna, lime, menta fresca, Montenegro': ['Cane sugar, lime, fresh mint, Montenegro', 'Sucre de canne, citron vert, menthe fraîche, Montenegro', 'Azúcar de caña, lima, menta fresca, Montenegro', 'Rohrzucker, Limette, frische Minze, Montenegro'],
+      'Gin, Rum, Tequila o Vodka, lime, zucchero di canna, Ginger Ale, fetta di arancia': ['Gin, Rum, Tequila or Vodka, lime, cane sugar, Ginger Ale, orange slice', 'Gin, Rhum, Tequila ou Vodka, citron vert, sucre de canne, Ginger Ale, tranche d’orange', 'Gin, Ron, Tequila o Vodka, lima, azúcar de caña, Ginger Ale, rodaja de naranja', 'Gin, Rum, Tequila oder Wodka, Limette, Rohrzucker, Ginger Ale, Orangenscheibe'],
+      'Ananas, spumante': ['Pineapple, sparkling wine', 'Ananas, vin mousseux', 'Piña, vino espumoso', 'Ananas, Sekt'],
+      'Pesca, spumante': ['Peach, sparkling wine', 'Pêche, vin mousseux', 'Melocotón, vino espumoso', 'Pfirsich, Sekt'],
+      'Mandarino, spumante': ['Mandarin, sparkling wine', 'Mandarine, vin mousseux', 'Mandarina, vino espumoso', 'Mandarine, Sekt'],
+      'Fragola, spumante': ['Strawberry, sparkling wine', 'Fraise, vin mousseux', 'Fresa, vino espumoso', 'Erdbeere, Sekt'],
+      'Gusti: banana, cocco, pesca, fragola, melone, kiwi, mela verde. Rum bianco, sciroppo di zucchero, succo di lime': ['Flavours: banana, coconut, peach, strawberry, melon, kiwi, green apple. White rum, sugar syrup, lime juice', 'Parfums : banane, noix de coco, pêche, fraise, melon, kiwi, pomme verte. Rhum blanc, sirop de sucre, jus de citron vert', 'Sabores: plátano, coco, melocotón, fresa, melón, kiwi, manzana verde. Ron blanco, sirope de azúcar, zumo de lima', 'Sorten: Banane, Kokos, Pfirsich, Erdbeere, Melone, Kiwi, grüner Apfel. Weißer Rum, Zuckersirup, Limettensaft'],
+      'Gusti: amaretto, Midori, Vodka, Whiskey. Succo di lime, sciroppo di zucchero': ['Flavours: amaretto, Midori, vodka, whiskey. Lime juice, sugar syrup', 'Parfums : amaretto, Midori, vodka, whiskey. Jus de citron vert, sirop de sucre', 'Sabores: amaretto, Midori, vodka, whiskey. Zumo de lima, sirope de azúcar', 'Sorten: Amaretto, Midori, Wodka, Whiskey. Limettensaft, Zuckersirup'],
+      'Lager, bassa fermentazione': ['Lager, bottom-fermented', 'Lager, basse fermentation', 'Lager, fermentación baja', 'Lager, untergärig'],
+      'Blanche, alta fermentazione': ['Blanche, top-fermented', 'Blanche, haute fermentation', 'Blanche, fermentación alta', 'Blanche, obergärig'],
+      'Strong Ale, alta fermentazione': ['Strong Ale, top-fermented', 'Strong Ale, haute fermentation', 'Strong Ale, fermentación alta', 'Strong Ale, obergärig'],
+      'Pale Ale, alta fermentazione': ['Pale Ale, top-fermented', 'Pale Ale, haute fermentation', 'Pale Ale, fermentación alta', 'Pale Ale, obergärig'],
+      'Ale, alta fermentazione': ['Ale, top-fermented', 'Ale, haute fermentation', 'Ale, fermentación alta', 'Ale, obergärig'],
+      'Prosciutto cotto e formaggio filante': ['Cooked ham and melted cheese', 'Jambon cuit et fromage fondant', 'Jamón cocido y queso fundido', 'Kochschinken und geschmolzener Käse'],
+      'Prosciutto cotto, formaggio filante e insalata': ['Cooked ham, melted cheese and lettuce', 'Jambon cuit, fromage fondant et salade', 'Jamón cocido, queso fundido y lechuga', 'Kochschinken, geschmolzener Käse und Blattsalat'],
+      'Toast Classico': ['Classic Toast', 'Classic Toast', 'Classic Toast', 'Classic Toast'],
+      'Toast Primavera': ['Primavera Toast', 'Primavera Toast', 'Primavera Toast', 'Primavera Toast'],
+      'Prosciutto crudo e mozzarella': ['Cured ham and mozzarella', 'Jambon cru et mozzarella', 'Jamón curado y mozzarella', 'Rohschinken und Mozzarella'],
+      'Prosciutto crudo, mozzarella, pomodoro e insalata': ['Cured ham, mozzarella, tomato and lettuce', 'Jambon cru, mozzarella, tomate et salade', 'Jamón curado, mozzarella, tomate y lechuga', 'Rohschinken, Mozzarella, Tomate und Blattsalat'],
+      'Tonno, olive, cipollina': ['Tuna, olives, spring onion', 'Thon, olives, petits oignons', 'Atún, aceitunas, cebolleta', 'Thunfisch, Oliven, Frühlingszwiebeln'],
+      'Mozzarella, pomodorino, basilico': ['Mozzarella, cherry tomatoes, basil', 'Mozzarella, tomates cerises, basilic', 'Mozzarella, tomates cherry, albahaca', 'Mozzarella, Kirschtomaten, Basilikum'],
+      'Pomodoro, aglio, basilico': ['Tomato, garlic, basil', 'Tomate, ail, basilic', 'Tomate, ajo, albahaca', 'Tomate, Knoblauch, Basilikum'],
+      'Melanzane grigliate, mozzarella': ['Grilled aubergine, mozzarella', 'Aubergines grillées, mozzarella', 'Berenjena a la plancha, mozzarella', 'Gegrillte Auberginen, Mozzarella'],
+      'Pomodorino, mozzarella, rucola e origano': ['Cherry tomatoes, mozzarella, rocket and oregano', 'Tomates cerises, mozzarella, roquette et origan', 'Tomates cherry, mozzarella, rúcula y orégano', 'Kirschtomaten, Mozzarella, Rucola und Oregano'],
+      'Con rucola e pomodorini': ['With rocket and cherry tomatoes', 'Avec roquette et tomates cerises', 'Con rúcula y tomates cherry', 'Mit Rucola und Kirschtomaten'],
+      'Prosciutto cotto e mozzarella': ['Cooked ham and mozzarella', 'Jambon cuit et mozzarella', 'Jamón cocido y mozzarella', 'Kochschinken und Mozzarella'],
+      'Prosciutto cotto, mozzarella, pomodoro e insalata': ['Cooked ham, mozzarella, tomato and lettuce', 'Jambon cuit, mozzarella, tomate et salade', 'Jamón cocido, mozzarella, tomate y lechuga', 'Kochschinken, Mozzarella, Tomate und Blattsalat'],
+      'Insalata, pomodorini, mais, rucola, petto di pollo grill': ['Lettuce, cherry tomatoes, sweetcorn, rocket, grilled chicken breast', 'Salade, tomates cerises, maïs, roquette, blanc de poulet grillé', 'Lechuga, tomates cherry, maíz, rúcula, pechuga de pollo a la plancha', 'Blattsalat, Kirschtomaten, Mais, Rucola, gegrillte Hähnchenbrust'],
+      'Insalata, pomodorini, rucola, mais e verdure grigliate': ['Lettuce, cherry tomatoes, rocket, sweetcorn and grilled vegetables', 'Salade, tomates cerises, roquette, maïs et légumes grillés', 'Lechuga, tomates cherry, rúcula, maíz y verduras a la plancha', 'Blattsalat, Kirschtomaten, Rucola, Mais und gegrilltes Gemüse'],
+      'Pomodoro e mozzarella di bufala': ['Tomato and buffalo mozzarella', 'Tomate et mozzarella di bufala', 'Tomate y mozzarella de búfala', 'Tomate und Büffelmozzarella'],
+      'Insalata, rucola, mais, pomodorini, tonno e olive': ['Lettuce, rocket, sweetcorn, cherry tomatoes, tuna and olives', 'Salade, roquette, maïs, tomates cerises, thon et olives', 'Lechuga, rúcula, maíz, tomates cherry, atún y aceitunas', 'Blattsalat, Rucola, Mais, Kirschtomaten, Thunfisch und Oliven'],
+      'Insalata, petto di pollo, parmigiano, crostini di pane e salad cream': ['Lettuce, chicken breast, Parmesan, croutons and salad cream', 'Salade, blanc de poulet, parmesan, croûtons et sauce salade', 'Lechuga, pechuga de pollo, parmesano, picatostes y salsa para ensalada', 'Blattsalat, Hähnchenbrust, Parmesan, Croutons und Salatcreme'],
+      'Fresella, tonno, pomodorini, olive, basilico': ['Frisella bread, tuna, cherry tomatoes, olives, basil', 'Pain frisella, thon, tomates cerises, olives, basilic', 'Pan frisella, atún, tomates cherry, aceitunas, albahaca', 'Frisella-Brot, Thunfisch, Kirschtomaten, Oliven, Basilikum'],
+      'Frutti di bosco / cioccolato / pistacchio / caramello': ['Mixed berries / chocolate / pistachio / caramel', 'Fruits rouges / chocolat / pistache / caramel', 'Frutos del bosque / chocolate / pistacho / caramelo', 'Waldbeeren / Schokolade / Pistazie / Karamell'],
+      'Decaffeinato': ['Decaffeinated', 'Décaféiné', 'Descafeinado', 'Entkoffeiniert'],
+      'Nocciola o Baileys': ['Hazelnut or Baileys', 'Noisette ou Baileys', 'Avellana o Baileys', 'Haselnuss oder Baileys'],
+      'Fresca': ['Freshly squeezed', 'Pressé minute', 'Recién exprimido', 'Frisch gepresst'],
+      '25 cl – pesca, pera, albicocca, ACE, ananas, pompelmo, mirtillo, pomodoro': ['25 cl – peach, pear, apricot, ACE, pineapple, grapefruit, blueberry, tomato', '25 cl – pêche, poire, abricot, ACE, ananas, pamplemousse, myrtille, tomate', '25 cl – melocotón, pera, albaricoque, ACE, piña, pomelo, arándano, tomate', '25 cl – Pfirsich, Birne, Aprikose, ACE, Ananas, Grapefruit, Heidelbeere, Tomate'],
+      'Tonic water / Lemon Tonic / Pink Grapefruit': ['Tonic water / Lemon Tonic / Pink Grapefruit', 'Tonic water / Lemon Tonic / Pink Grapefruit', 'Tonic water / Lemon Tonic / Pink Grapefruit', 'Tonic water / Lemon Tonic / Pink Grapefruit'],
+      'Tonica, limone, arancia': ['Tonic, lemon, orange', 'Tonic, citron, orange', 'Tónica, limón, naranja', 'Tonic, Zitrone, Orange'],
+      'Limone, fragola': ['Lemon, strawberry', 'Citron, fraise', 'Limón, fresa', 'Zitrone, Erdbeere'],
+      'Mix crema, mix frutta': ['Mix of cream flavours, mix of fruit flavours', 'Assortiment de parfums crème, assortiment de parfums fruits', 'Mezcla de sabores de crema, mezcla de sabores de fruta', 'Mix aus Cremesorten, Mix aus Fruchtsorten'],
+      'Affogato al caffè': ['Affogato with espresso', 'Affogato au café', 'Affogato con café', 'Affogato mit Espresso'],
+      'Componi il tuo spritz': ['Build your spritz', 'Composez votre spritz', 'Elige tu spritz', 'Spritz nach Wahl'],
+      'Long Drink analcolico': ['Alcohol-free long drink', 'Long drink sans alcool', 'Long drink sin alcohol', 'Alkoholfreier Longdrink'],
+      'Long Drink alcolico': ['Long drink with alcohol', 'Long drink alcoolisé', 'Long drink con alcohol', 'Longdrink mit Alkohol'],
+      'Malfy Limone / Arancia / Pompelmo Rosa': ['Malfy Lemon / Orange / Pink Grapefruit', 'Malfy Citron / Orange / Pamplemousse rose', 'Malfy Limón / Naranja / Pomelo rosa', 'Malfy Zitrone / Orange / Rosa Grapefruit'],
+      'Cocktail Frozen': ['Frozen cocktail', 'Cocktail frozen', 'Cóctel frozen', 'Frozen-Cocktail'],
+      'Oro': ['Gold', 'Or', 'Oro', 'Gold'],
+      'Bianca': ['White', 'Blanche', 'Blanca', 'Weiß'],
+      'Rossa': ['Red', 'Rousse', 'Roja', 'Rot'],
+      'Doppio Malto': ['Double Malt', 'Double malt', 'Doble malta', 'Doppelmalz'],
+      'Ambrata': ['Amber', 'Ambrée', 'Ámbar', 'Bernstein'],
+      'Senza Glutine': ['Gluten-free', 'Sans gluten', 'Sin gluten', 'Glutenfrei'],
+      'Birra Analcolica': ['Alcohol-free beer', 'Bière sans alcool', 'Cerveza sin alcohol', 'Alkoholfreies Bier'],
+      'Calice': ['Glass', 'Verre', 'Copa', 'Glas'],
+      'Deff’ – Gajeco DOC Prosecco (calice)': ['Deff’ – Gajeco DOC Prosecco (glass)', 'Deff’ – Gajeco DOC Prosecco (verre)', 'Deff’ – Gajeco DOC Prosecco (copa)', 'Deff’ – Gajeco DOC Prosecco (Glas)'],
+      'Deff’ – Gajeco DOC Prosecco (bottiglia)': ['Deff’ – Gajeco DOC Prosecco (bottle)', 'Deff’ – Gajeco DOC Prosecco (bouteille)', 'Deff’ – Gajeco DOC Prosecco (botella)', 'Deff’ – Gajeco DOC Prosecco (Flasche)'],
+      'Lagavulin 16 anni': ['Lagavulin 16 years', 'Lagavulin 16 ans', 'Lagavulin 16 años', 'Lagavulin 16 Jahre'],
+      'Oban 14 anni': ['Oban 14 years', 'Oban 14 ans', 'Oban 14 años', 'Oban 14 Jahre'],
+      'Havana Club 7 anni': ['Havana Club 7 years', 'Havana Club 7 ans', 'Havana Club 7 años', 'Havana Club 7 Jahre'],
+      'Zacapa Solera 23 anni': ['Zacapa Solera 23 years', 'Zacapa Solera 23 ans', 'Zacapa Solera 23 años', 'Zacapa Solera 23 Jahre'],
+      'Matusalem 15 anni': ['Matusalem 15 years', 'Matusalem 15 ans', 'Matusalem 15 años', 'Matusalem 15 Jahre'],
+      'Cognac alle Pere': ['Pear cognac', 'Cognac à la poire', 'Coñac de pera', 'Birnen-Cognac'],
+      'Amari': ['Amari (herbal liqueurs)', 'Amari (liqueurs aux herbes)', 'Amari (licores de hierbas)', 'Amari (Kräuterliköre)'],
+      'Grappa bianca': ['White grappa', 'Grappa blanche', 'Grappa blanca', 'Weiße Grappa'],
+      'Grappa barricata': ['Barrel-aged grappa', 'Grappa vieillie en fût', 'Grappa envejecida en barrica', 'Im Fass gereifte Grappa'],
+      'Bitter Bianco / Rosso': ['White / Red Bitter', 'Bitter blanc / rouge', 'Bitter blanco / rojo', 'Bitter weiß / rot'],
+      'Petto di pollo alla piastra': ['Grilled chicken breast', 'Blanc de poulet grillé', 'Pechuga de pollo a la plancha', 'Gegrillte Hähnchenbrust'],
+      'Tagliata di pollo': ['Sliced grilled chicken', 'Émincé de poulet grillé', 'Pollo a la plancha en tiras', 'Hähnchen-Tagliata'],
+      'Delizia al Limone': ['Lemon delight', 'Délice au citron', 'Delicia de limón', 'Zitronen-Delizia'],
+      'Mousse al Cioccolato': ['Chocolate mousse', 'Mousse au chocolat', 'Mousse de chocolate', 'Schokoladenmousse'],
+      'Tortino con cuore caldo': ['Molten chocolate cake', 'Moelleux au cœur coulant', 'Volcán de chocolate', 'Schokoküchlein mit flüssigem Kern'],
+      'Dolce del giorno': ['Dessert of the day', 'Dessert du jour', 'Postre del día', 'Dessert des Tages'],
+      'Caffè caldo': ['Espresso', 'Expresso', 'Café espresso', 'Espresso'],
+      'Caffè caldo Nocciola': ['Hazelnut espresso', 'Expresso noisette', 'Espresso de avellana', 'Haselnuss-Espresso'],
+      'Caffè Ginseng': ['Ginseng coffee', 'Café au ginseng', 'Café de ginseng', 'Ginseng-Kaffee'],
+      'Orzo': ['Barley coffee', 'Café d’orge', 'Café de cebada', 'Gerstenkaffee'],
+      'Caffè Brasiliano': ['Brazilian coffee', 'Café brésilien', 'Café brasileño', 'Brasilianischer Kaffee'],
+      'Caffè Americano': ['Americano', 'Café américain', 'Café americano', 'Americano'],
+      'Caffè del Nonno': ['Caffè del Nonno (coffee cream)', 'Caffè del Nonno (crème de café)', 'Caffè del Nonno (crema de café)', 'Caffè del Nonno (Kaffeecreme)'],
+      'Caffè freddo': ['Iced coffee', 'Café glacé', 'Café frío', 'Eiskaffee'],
+      'Cioccolata calda': ['Hot chocolate', 'Chocolat chaud', 'Chocolate caliente', 'Heiße Schokolade'],
+      'Latte bianco': ['Hot milk', 'Lait chaud', 'Leche caliente', 'Heiße Milch'],
+      'Tè caldo': ['Hot tea', 'Thé chaud', 'Té caliente', 'Heißer Tee'],
+      'Camomilla': ['Chamomile tea', 'Camomille', 'Manzanilla', 'Kamillentee'],
+      'Spremuta di arancia': ['Orange juice', 'Jus d’orange', 'Zumo de naranja', 'Orangensaft'],
+      'Spremuta di limone': ['Lemon juice', 'Jus de citron', 'Zumo de limón', 'Zitronensaft'],
+      'Santal succo di frutta': ['Santal fruit juice', 'Jus de fruits Santal', 'Zumo de frutas Santal', 'Santal Fruchtsaft'],
+      'Acqua piccola': ['Water (small)', 'Eau (petite)', 'Agua (pequeña)', 'Wasser (klein)'],
+      'Acqua grande': ['Water (large)', 'Eau (grande)', 'Agua (grande)', 'Wasser (groß)'],
+      'Aranciata': ['Orange soda', 'Orangeade', 'Naranjada', 'Orangenlimonade'],
+      'Granite': ['Granita', 'Granité', 'Granizado', 'Granita'],
+      'Coppa gelato piccola': ['Ice cream cup (small)', 'Coupe de glace (petite)', 'Copa de helado (pequeña)', 'Eisbecher (klein)'],
+      'Coppa gelato grande': ['Ice cream cup (large)', 'Coupe de glace (grande)', 'Copa de helado (grande)', 'Eisbecher (groß)'],
+      'Coppa gelato': ['Ice cream cup', 'Coupe de glace', 'Copa de helado', 'Eisbecher'],
+      'Tagliata di frutta': ['Fresh fruit platter', 'Assiette de fruits frais', 'Fruta fresca cortada', 'Frischer Obstteller'],
+      'Cocco Split': ['Coconut split', 'Coco split', 'Coco split', 'Kokos-Split'],
+      'Ananas Split': ['Pineapple split', 'Ananas split', 'Piña split', 'Ananas-Split'],
+      'Cocco': ['Coconut', 'Noix de coco', 'Coco', 'Kokosnuss'],
+      'Limone': ['Lemon', 'Citron', 'Limón', 'Zitrone'],
+      'Tartufo bianco / Cacao': ['Tartufo (white / cocoa)', 'Tartufo (blanc / cacao)', 'Tartufo (blanco / cacao)', 'Tartufo (weiß / Kakao)'],
+      'Frullati': ['Smoothies', 'Smoothies', 'Batidos de fruta', 'Smoothies'],
+      'Frappè': ['Milkshake', 'Milk-shake', 'Frappé', 'Milchshake'],
+      'Cornetto': ['Croissant', 'Croissant', 'Cruasán', 'Croissant'],
+      'Sfogliata riccia o frolla': ['Sfogliatella, riccia or frolla', 'Sfogliatella riccia ou frolla', 'Sfogliatella riccia o frolla', 'Sfogliatella, riccia oder frolla'],
+      'Pizza Margherita o Marinara': ['Pizza Margherita or Marinara', 'Pizza Margherita ou Marinara', 'Pizza Margherita o Marinara', 'Pizza Margherita oder Marinara'],
+      'Panino Hot Dog': ['Hot dog', 'Hot-dog', 'Perrito caliente', 'Hotdog'],
+      'Pizza farcita': ['Stuffed pizza', 'Pizza garnie', 'Pizza rellena', 'Gefüllte Pizza'],
+      'Panino Napoletano': ['Panino napoletano (savoury pastry)', 'Panino napolitain (feuilleté salé)', 'Panino napolitano (hojaldre salado)', 'Panino napoletano (herzhaftes Gebäck)'],
+      'Long Drink alla frutta': ['Fruit long drinks', 'Long drinks aux fruits', 'Long drinks de fruta', 'Longdrinks mit Früchten'],
+      '4,8% vol.': ['4.8% vol.', '4,8 % vol.', '4,8 % vol.', '4,8 % vol.'],
+      'Spina 25 cl': ['Draught 25 cl', 'Pression 25 cl', 'De barril 25 cl', 'Vom Fass 25 cl'],
+      '4,5% vol.': ['4.5% vol.', '4,5 % vol.', '4,5 % vol.', '4,5 % vol.'],
+      '5,0% vol.': ['5.0% vol.', '5,0 % vol.', '5,0 % vol.', '5,0 % vol.'],
+      '7,0% vol.': ['7.0% vol.', '7,0 % vol.', '7,0 % vol.', '7,0 % vol.'],
+      '5,8% vol.': ['5.8% vol.', '5,8 % vol.', '5,8 % vol.', '5,8 % vol.'],
+      '< 0,5% vol.': ['< 0.5% vol.', '< 0,5 % vol.', '< 0,5 % vol.', '< 0,5 % vol.'],
+      'Vini Bianchi': ['White wines', 'Vins blancs', 'Vinos blancos', 'Weißweine'],
+      'Vini Rosé e Rossi': ['Rosé and red wines', 'Vins rosés et rouges', 'Vinos rosados y tintos', 'Rosé- und Rotweine'],
+      'Bollicine': ['Sparkling wines', 'Vins effervescents', 'Espumosos', 'Schaumweine'],
+      'Rum': ['Rum', 'Rhum', 'Ron', 'Rum'],
+      'Cognac & Brandy': ['Cognac & brandy', 'Cognac & brandy', 'Coñac y brandy', 'Cognac & Brandy'],
+      'Dopo cena': ['After dinner', 'Après le dîner', 'Después de cenar', 'Nach dem Abendessen'],
+      'Tutto il giorno': ['All day', 'Toute la journée', 'Todo el día', 'Den ganzen Tag'],
+      'Long drinks': ['Long drinks', 'Long drinks', 'Long drinks', 'Longdrinks'],
+      'Gin tonic': ['Gin & tonic', 'Gin tonic', 'Gin-tonic', 'Gin Tonic'],
+      'I nostri cocktail sono serviti con le toniche premium Fever-Tree.': ['Our cocktails are served with Fever-Tree premium tonics.', 'Nos cocktails sont servis avec les tonics premium Fever-Tree.', 'Nuestros cócteles se sirven con las tónicas premium Fever-Tree.', 'Unsere Cocktails werden mit den Premium-Tonics von Fever-Tree serviert.'],
+      'Vodka tonic': ['Vodka & tonic', 'Vodka tonic', 'Vodka-tonic', 'Wodka Tonic'],
+      'Cocktail pestati': ['Muddled cocktails', 'Cocktails pilés', 'Cócteles macerados', 'Gestößelte Cocktails'],
+      'Cocktail sparkling': ['Sparkling cocktails', 'Cocktails pétillants', 'Cócteles con espumoso', 'Cocktails mit Sekt'],
+      'Cocktail frozen': ['Frozen cocktails', 'Cocktails frozen', 'Cócteles frozen', 'Frozen-Cocktails'],
+      'Birre artigianali napoletane N’Artigiana': ['Neapolitan craft beers N’Artigiana', 'Bières artisanales napolitaines N’Artigiana', 'Cervezas artesanales napolitanas N’Artigiana', 'Neapolitanische Craft-Biere N’Artigiana'],
+      'Birre in bottiglia': ['Bottled beers', 'Bières en bouteille', 'Cervezas en botella', 'Flaschenbiere'],
+      'Vini': ['Wines', 'Vins', 'Vinos', 'Weine'],
+      'Distillati': ['Spirits', 'Spiritueux', 'Destilados', 'Spirituosen'],
+      'Digestivi': ['Digestifs', 'Digestifs', 'Digestivos', 'Digestifs'],
+      'Aperitivi': ['Aperitifs', 'Apéritifs', 'Aperitivos', 'Aperitifs'],
+      'Toast': ['Toasted sandwiches', 'Sandwichs grillés', 'Sándwiches tostados', 'Toasts'],
+      'Secondi al piatto': ['Main courses', 'Plats principaux', 'Segundos platos', 'Hauptgerichte'],
+      'Insalatone': ['Large salads', 'Grandes salades', 'Ensaladas grandes', 'Große Salate'],
+      'Dolci': ['Desserts', 'Desserts', 'Postres', 'Desserts'],
+      'Alcuni prodotti sono preparati con materia prima congelata o surgelata all’origine. Se hai delle allergie e/o intolleranze alimentari chiedi informazioni al nostro staff. Saremo lieti di aiutarti nel migliore dei modi.': ['Some products are prepared with ingredients frozen or deep-frozen at source. If you have any food allergies and/or intolerances, please ask our staff for information. We will be happy to help you in the best possible way.', 'Certains produits sont préparés avec des matières premières congelées ou surgelées à l’origine. Si vous avez des allergies et/ou des intolérances alimentaires, demandez des informations à notre personnel. Nous serons ravis de vous aider au mieux.', 'Algunos productos se preparan con materias primas congeladas o ultracongeladas en origen. Si tiene alergias y/o intolerancias alimentarias, pida información a nuestro personal. Estaremos encantados de ayudarle de la mejor manera.', 'Einige Produkte werden mit bereits beim Erzeuger gefrorenen oder tiefgekühlten Rohstoffen zubereitet. Wenn Sie Lebensmittelallergien und/oder -unverträglichkeiten haben, fragen Sie bitte unser Personal. Wir helfen Ihnen gerne bestmöglich weiter.'],
+      'Caffè e bevande calde': ['Coffee and hot drinks', 'Café et boissons chaudes', 'Café y bebidas calientes', 'Kaffee und Heißgetränke'],
+      'Personalizzazioni: +€ 2,00': ['Customisations: +€2.00', 'Personnalisations : +2,00 €', 'Personalizaciones: +2,00 €', 'Extras: +2,00 €'],
+      'Succhi e spremute': ['Juices', 'Jus de fruits', 'Zumos', 'Säfte'],
+      'Bibite': ['Soft drinks', 'Boissons fraîches', 'Refrescos', 'Softdrinks'],
+      'Gelateria': ['Ice cream', 'Glaces', 'Heladería', 'Eis'],
+      'Personalizzazioni: +€ 1,00': ['Customisations: +€1.00', 'Personnalisations : +1,00 €', 'Personalizaciones: +1,00 €', 'Extras: +1,00 €'],
+      'Antica gelateria': ['Traditional ice cream', 'Glaces d’antan', 'Heladería tradicional', 'Eis nach alter Art'],
+      'Frullati & frappè': ['Smoothies & milkshakes', 'Smoothies & milk-shakes', 'Batidos y frappés', 'Smoothies & Milchshakes'],
+      'Pasticceria & rosticceria': ['Pastries & savoury bakes', 'Pâtisseries & snacks salés', 'Pastelería y bollería salada', 'Gebäck & herzhafte Snacks'],
+      'Colazione': ['Breakfast', 'Petit-déjeuner', 'Desayuno', 'Frühstück'],
+      'Aperitivo': ['Aperitivo', 'Apéritif', 'Aperitivo', 'Aperitif'],
+      'Cocktail': ['Cocktails', 'Cocktails', 'Cócteles', 'Cocktails'],
+      'Birre': ['Beers', 'Bières', 'Cervezas', 'Biere'],
+      'Vini e distillati': ['Wines & spirits', 'Vins & spiritueux', 'Vinos y destilados', 'Weine & Spirituosen'],
+      'Cucina': ['Food', 'Cuisine', 'Cocina', 'Küche'],
+      'Dolci e gelati': ['Desserts & ice cream', 'Desserts & glaces', 'Postres y helados', 'Desserts & Eis'],
+      'Vegano': ['Vegan', 'Végan', 'Vegano', 'Vegan'],
+      'Vegetariano': ['Vegetarian', 'Végétarien', 'Vegetariano', 'Vegetarisch'],
+      'Senza glutine': ['Gluten-free', 'Sans gluten', 'Sin gluten', 'Glutenfrei'],
+      'Analcolico': ['Alcohol-free', 'Sans alcool', 'Sin alcohol', 'Alkoholfrei'],
+      'Contiene glutine': ['Contains gluten', 'Contient du gluten', 'Contiene gluten', 'Enthält Gluten'],
+      'Contiene lattosio': ['Contains lactose', 'Contient du lactose', 'Contiene lactosa', 'Enthält Laktose'],
+      'Contiene uova': ['Contains eggs', 'Contient des œufs', 'Contiene huevo', 'Enthält Eier'],
+      'Frutta a guscio': ['Tree nuts', 'Fruits à coque', 'Frutos de cáscara', 'Schalenfrüchte'],
+      'Contiene soia': ['Contains soy', 'Contient du soja', 'Contiene soja', 'Enthält Soja'],
+      'Contiene sesamo': ['Contains sesame', 'Contient du sésame', 'Contiene sésamo', 'Enthält Sesam'],
+      'Contiene solfiti': ['Contains sulphites', 'Contient des sulfites', 'Contiene sulfitos', 'Enthält Sulfite'],
+      'Vai al menu': ['Skip to menu', 'Aller au menu', 'Ir a la carta', 'Zur Karte'],
+      'Benvenuti da': ['Welcome to', 'Bienvenue chez', 'Bienvenidos a', 'Willkommen bei'],
+      'Il menu': ['Menu', 'Le menu', 'La carta', 'Die Karte'],
+      'Indice del menu': ['Menu sections', 'Rubriques du menu', 'Secciones de la carta', 'Bereiche der Karte'],
+      'mostra tutto il menu': ['show the full menu', 'afficher tout le menu', 'ver toda la carta', 'ganze Karte anzeigen'],
+      'Tutto il menu': ['Full menu', 'Tout le menu', 'Toda la carta', 'Ganze Karte'],
+      '{n} prodotti': ['{n} products', '{n} produits', '{n} productos', '{n} Produkte'],
+      '1 prodotto': ['1 product', '1 produit', '1 producto', '1 Produkt'],
+      ' in {f}': [' in {f}', ' dans {f}', ' en {f}', ' in {f}'],
+      'Informazioni utili': ['Useful information', 'Informations utiles', 'Información útil', 'Nützliche Informationen'],
+      'Allergie e intolleranze': ['Allergies and intolerances', 'Allergies et intolérances', 'Alergias e intolerancias', 'Allergien und Unverträglichkeiten'],
+      'Le indicazioni che trovi accanto ai prodotti:': ['The labels next to the products:', 'Les indications à côté des produits :', 'Las indicaciones junto a los productos:', 'Die Hinweise neben den Produkten:'],
+      'Elenco dei 14 allergeni (Reg. UE 1169/2011)': ['List of the 14 allergens (EU Reg. 1169/2011)', 'Liste des 14 allergènes (Règl. UE 1169/2011)', 'Lista de los 14 alérgenos (Reg. UE 1169/2011)', 'Liste der 14 Allergene (EU-VO 1169/2011)'],
+      'Cereali con glutine': ['Cereals containing gluten', 'Céréales contenant du gluten', 'Cereales con gluten', 'Glutenhaltiges Getreide'],
+      'Crostacei': ['Crustaceans', 'Crustacés', 'Crustáceos', 'Krebstiere'],
+      'Uova': ['Eggs', 'Œufs', 'Huevos', 'Eier'],
+      'Pesce': ['Fish', 'Poisson', 'Pescado', 'Fisch'],
+      'Arachidi': ['Peanuts', 'Arachides', 'Cacahuetes', 'Erdnüsse'],
+      'Soia': ['Soy', 'Soja', 'Soja', 'Soja'],
+      'Latte e lattosio': ['Milk and lactose', 'Lait et lactose', 'Leche y lactosa', 'Milch und Laktose'],
+      'Sedano': ['Celery', 'Céleri', 'Apio', 'Sellerie'],
+      'Senape': ['Mustard', 'Moutarde', 'Mostaza', 'Senf'],
+      'Semi di sesamo': ['Sesame seeds', 'Graines de sésame', 'Granos de sésamo', 'Sesamsamen'],
+      'Anidride solforosa e solfiti': ['Sulphur dioxide and sulphites', 'Anhydride sulfureux et sulfites', 'Dióxido de azufre y sulfitos', 'Schwefeldioxid und Sulfite'],
+      'Lupini': ['Lupin', 'Lupin', 'Altramuces', 'Lupinen'],
+      'Molluschi': ['Molluscs', 'Mollusques', 'Moluscos', 'Weichtiere'],
+      'Prezzi in euro, IVA inclusa. Immagini e ingredienti possono variare.': ['Prices in euros, VAT included. Images and ingredients may vary.', 'Prix en euros, TVA incluse. Les images et les ingrédients peuvent varier.', 'Precios en euros, IVA incluido. Las imágenes y los ingredientes pueden variar.', 'Preise in Euro inkl. MwSt. Abbildungen und Zutaten können abweichen.'],
+      'Torna all’inizio': ['Back to top', 'Retour en haut', 'Volver arriba', 'Nach oben'],
+      'euro': ['euros', 'euros', 'euros', 'Euro'],
+      'Allergeni e note': ['Allergens and notes', 'Allergènes et remarques', 'Alérgenos y notas', 'Allergene und Hinweise'],
+      'Terminato per oggi': ['Sold out today', 'Épuisé pour aujourd’hui', 'Agotado por hoy', 'Heute ausverkauft'],
+      'Consigliato': ['Recommended', 'Recommandé', 'Recomendado', 'Empfohlen'],
+      'Novità': ['New', 'Nouveauté', 'Novedad', 'Neu'],
+      'Lingua: {l}': ['Language: {l}', 'Langue : {l}', 'Idioma: {l}', 'Sprache: {l}']
+    };
+
+  </script>
+
+  <!-- =========================================================
+       LOGICA DELLA PAGINA
+       Di solito non serve modificare nulla qui sotto.
+       ========================================================= -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ---------- Utilità ---------- */
+    const $ = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+    const movimentoRidotto = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const comportamentoScroll = () => (movimentoRidotto.matches ? 'auto' : 'smooth');
+
+    // Evita che caratteri speciali nei testi rompano l'HTML
+    function esc(testo) {
+      return String(testo == null ? '' : testo).replace(/[&<>"']/g, c => (
+        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+      ));
+    }
+    // Solo lettere minuscole senza accenti, per i nomi delle classi: "Novità" → "novita"
+    function semplifica(testo) {
+      return String(testo || '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^a-z]/g, '');
+    }
+    // Elemento indicato da un "#id"; null se non esiste o se l'indirizzo è malformato
+    // (es. "#%E0%A4%A", su cui decodeURIComponent lancerebbe un errore)
+    function elementoDaHash(hash) {
+      if (!hash || hash.length < 2) return null;
+      try {
+        return document.getElementById(decodeURIComponent(hash.slice(1)));
+      } catch (e) {
+        return null;
+      }
+    }
+
+    /* ---------- Lingua ---------- */
+    const ORDINE_TRADUZIONI = { en: 0, fr: 1, es: 2, de: 3 }; // colonne di TRADUZIONI
+    let lingua = 'it';
+    // Traduce un testo italiano nella lingua scelta; {n}, {f}… vengono sostituiti con i valori
+    function t(testo, valori) {
+      let r = testo == null ? '' : String(testo);
+      const i = ORDINE_TRADUZIONI[lingua];
+      if (i !== undefined && TRADUZIONI[r] && TRADUZIONI[r][i]) r = TRADUZIONI[r][i];
+      if (valori) r = r.replace(/\{(\w+)\}/g, (m, k) => (valori[k] != null ? valori[k] : m));
+      return r;
+    }
+
+    // Prezzi in stile carta: "9", "1,30", "12,50" (in inglese "12.50"; la valuta è indicata in fondo).
+    // Se un prezzo manca o non è un numero restituisce '' invece di bloccare tutto il menu.
+    function prezzo(valore) {
+      if (typeof valore !== 'number' || !Number.isFinite(valore)) return '';
+      let testo = Number.isInteger(valore) ? String(valore) : valore.toFixed(2);
+      if (lingua !== 'en') testo = testo.replace('.', ',');
+      return `${testo}<span class="sr-only"> ${t('euro')}</span>`;
+    }
+
+    const categoriaDi = id => CATEGORIE.find(c => c.id === id);
+    const visibili = PRODOTTI.filter(p => p.stato !== 'nascosto' && categoriaDi(p.categoria));
+
+    /* ---------- 1. Dati del locale nella pagina ---------- */
+    function applicaConfig() {
+      $$('[data-config]').forEach(el => {
+        const valore = el.dataset.config.split('.').reduce((o, k) => (o ? o[k] : undefined), CONFIG);
+        if (valore) el.textContent = valore;
+      });
+      $('#anno').textContent = new Date().getFullYear();
+    }
+
+    /* ---------- 2. Costruzione del menu ---------- */
+    function schedaProdotto(p) {
+      const esaurito = p.stato === 'esaurito';
+      const foto = p.immagine
+        ? `<div class="foto" aria-hidden="true"><img src="${esc(p.immagine)}" alt="" loading="lazy" decoding="async"></div>`
+        : '';
+
+      const badge = [
+        p.badge ? `<span class="badge badge-${semplifica(p.badge)}">${esc(t(p.badge))}</span>` : '',
+        esaurito ? `<span class="badge badge-esaurito">${esc(t('Terminato per oggi'))}</span>` : ''
+      ].join('');
+
+      const puntini = '<span class="puntini" aria-hidden="true"></span>';
+      const conPrezzo = valore => {
+        const importo = prezzo(valore);
+        return importo ? `${puntini}<span class="prezzo">${importo}</span>` : '';
+      };
+      const varianti = Array.isArray(p.varianti) && p.varianti.length
+        ? `<ul class="varianti">${p.varianti.map(v =>
+            `<li><span>${esc(t(v.nome))}</span>${conPrezzo(v.prezzo)}</li>`).join('')}</ul>`
+        : '';
+      const prezzoSingolo = varianti ? '' : conPrezzo(p.prezzo);
+
+      const tag = (p.tag || []).filter(k => TAG[k]);
+      const listaTag = tag.length
+        ? `<ul class="tag" aria-label="${esc(t('Allergeni e note'))}">${tag.map(k =>
+            `<li class="tag-${esc(TAG[k].tipo)}">${esc(t(TAG[k].etichetta))}</li>`).join('')}</ul>`
+        : '';
+
+      // Voce "compatta" (solo nome e prezzo, es. etichette di gin o whisky): righe più strette
+      const compatta = !p.descrizione && !varianti && !p.nota && !listaTag && !badge && !p.immagine;
+      const classi = ['prodotto', esaurito && 'esaurito', p.immagine && 'con-foto',
+        p.grassetto && 'in-grassetto', compatta && 'compatta'].filter(Boolean).join(' ');
+
+      return `<li class="${classi}">
+        ${foto}
+        <div>
+          ${badge ? `<p class="badges">${badge}</p>` : ''}
+          <div class="prodotto-riga">
+            <p class="prodotto-nome">${esc(t(p.nome))}${p.dettaglio ? ` <span class="dettaglio">${esc(t(p.dettaglio))}</span>` : ''}</p>
+            ${prezzoSingolo}
+          </div>
+          ${p.descrizione ? `<p class="descrizione">${esc(t(p.descrizione))}</p>` : ''}
+          ${varianti}
+          ${p.nota ? `<p class="nota">${esc(t(p.nota))}</p>` : ''}
+          ${listaTag}
+        </div>
+      </li>`;
+    }
+
+    function sezioneHtml(c, vociSezione) {
+      // Le voci consecutive con lo stesso "gruppo" (es. Vini Bianchi) stanno sotto un sottotitolo
+      const blocchi = [];
+      vociSezione.forEach(p => {
+        const gruppo = p.gruppo || '';
+        const ultimo = blocchi[blocchi.length - 1];
+        if (ultimo && ultimo.gruppo === gruppo) ultimo.voci.push(p);
+        else blocchi.push({ gruppo, voci: [p] });
+      });
+      const elenco = voci => `<ul class="prodotti">${voci.map(p => schedaProdotto(p)).join('')}</ul>`;
+      const id = esc(c.id);
+      const corpo = blocchi.map(b => b.gruppo
+        ? `<div class="gruppo"><h4 class="gruppo-titolo">${esc(t(b.gruppo))}</h4>${elenco(b.voci)}</div>`
+        : elenco(b.voci)).join('') +
+        (c.notaFinale ? `<p class="sezione-nota sezione-nota-finale">${esc(t(c.notaFinale))}</p>` : '');
+
+      // Sezione senza nome (es. la prima): niente titolo, solo le voci
+      if (!c.nome) return `<div class="sezione" id="${id}">${corpo}</div>`;
+
+      return `
+        <section class="sezione" id="${id}" aria-labelledby="t-${id}">
+          <div class="sezione-testa">
+            ${c.immagine ? `<div class="vignetta" aria-hidden="true"><img src="${esc(c.immagine)}" alt="" loading="lazy" decoding="async"></div>` : ''}
+            <h3 class="sezione-titolo" id="t-${id}" tabindex="-1">${esc(t(c.nome))}</h3>
+            ${c.nota ? `<p class="sezione-nota">${esc(t(c.nota))}</p>` : ''}
+          </div>
+          ${corpo}
+        </section>`;
+    }
+
+    function renderMenu() {
+      const vociDi = id => visibili.filter(p => p.categoria === id);
+      const partiAttive = PARTI
+        .map(pt => ({ ...pt, sezioni: CATEGORIE.filter(c => c.parte === pt.id && vociDi(c.id).length) }))
+        .filter(pt => pt.sezioni.length);
+
+      // Parti, sezioni e voci del menu
+      $('#sezioni').innerHTML = partiAttive.map(pt => `
+        <div class="parte" id="parte-${esc(pt.id)}">
+          ${pt.sezioni.map(c => sezioneHtml(c, vociDi(c.id))).join('')}
+        </div>`).join('');
+
+      // Voci dell'indice (menu a tre linee)
+      $('#indice-lista').innerHTML = FILTRI.map(f =>
+        `<li><button type="button" class="voce-indice" data-filtro="${esc(f.id)}" aria-pressed="false">${esc(t(f.etichetta))}</button></li>`
+      ).join('');
+
+      // Legenda delle etichette effettivamente usate nel menu (nascosta se non ce ne sono)
+      const usati = new Set(visibili.flatMap(p => p.tag || []));
+      const legenda = Object.keys(TAG).filter(k => usati.has(k));
+      $('#legenda').innerHTML = legenda.map(k => `<li class="tag-${esc(TAG[k].tipo)}">${esc(t(TAG[k].etichetta))}</li>`).join('');
+      $('#legenda').hidden = $('#legenda-intro').hidden = legenda.length === 0;
+    }
+
+    /* ---------- 3. Parti del menu scelte dall'indice ---------- */
+    const stato = { filtro: 'tutti' };
+
+    function applicaFiltri(opzioni = {}) {
+      const filtro = FILTRI.find(f => f.id === stato.filtro) || FILTRI[0];
+      const tutto = !filtro.categorie;
+      let quanti = 0;
+      $$('#sezioni .sezione').forEach(s => {
+        const mostra = tutto || filtro.categorie.includes(s.id);
+        s.hidden = !mostra;
+        if (mostra) quanti += s.querySelectorAll('.prodotto').length;
+      });
+      $$('#sezioni .parte').forEach(pt => { pt.hidden = !pt.querySelector('.sezione:not([hidden])'); });
+      $$('#indice-lista .voce-indice').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filtro === filtro.id)));
+
+      // Sotto il titolo: la parte scelta, che toccata riporta a tutto il menu
+      $('#filtro-attivo').hidden = tutto;
+      $('#filtro-attivo-nome').textContent = tutto ? '' : t(filtro.etichetta);
+
+      // Annuncio per i lettori di schermo
+      $('#annuncio').textContent = tutto
+        ? t('Tutto il menu')
+        : (quanti === 1 ? t('1 prodotto') : t('{n} prodotti', { n: quanti })) + t(' in {f}', { f: t(filtro.etichetta) });
+
+      // Piccola dissolvenza per mostrare che l'elenco è cambiato
+      if (opzioni.anima) {
+        const r = $('#sezioni');
+        r.classList.remove('aggiorna');
+        void r.offsetWidth; // fa ripartire l'animazione
+        r.classList.add('aggiorna');
+      }
+    }
+
+    // Se l'utente è più in basso dell'inizio del menu, lo riporta al titolo
+    function portaAlMenu() {
+      const inizio = $('#menu').getBoundingClientRect().top + window.scrollY - $('#testata').offsetHeight;
+      if (window.scrollY > inizio + 2) window.scrollTo({ top: inizio, behavior: comportamentoScroll() });
+    }
+
+    // Mostra una parte del menu (o tutto, con 'tutti') e riporta all'inizio
+    function scegliFiltro(id) {
+      stato.filtro = id;
+      applicaFiltri({ anima: true });
+      portaAlMenu();
+      $('#titolo-menu').focus({ preventScroll: true });
+    }
+
+    // Mostra di nuovo tutto il menu, senza spostare la pagina
+    function azzera() {
+      stato.filtro = 'tutti';
+      applicaFiltri({ anima: true });
+    }
+
+    /* ---------- 4. Indice: il menu a tre linee nella testata ---------- */
+    function collegaIndice() {
+      const pulsante = $('#btn-indice');
+      const pannello = $('#indice');
+      const velo = $('#velo');
+
+      function apri() {
+        pannello.hidden = false;
+        velo.hidden = false;
+        $('#testata').classList.add('con-indice');
+        pulsante.setAttribute('aria-expanded', 'true');
+        const voce = $('.voce-indice[aria-pressed="true"]', pannello) || $('.voce-indice', pannello);
+        if (voce) voce.focus({ preventScroll: true });
+      }
+      function chiudi(riportaFuoco) {
+        if (pannello.hidden) return;
+        pannello.hidden = true;
+        velo.hidden = true;
+        $('#testata').classList.remove('con-indice');
+        pulsante.setAttribute('aria-expanded', 'false');
+        if (riportaFuoco) pulsante.focus();
+      }
+
+      pulsante.addEventListener('click', () => (pannello.hidden ? apri() : chiudi(true)));
+      pannello.addEventListener('click', e => {
+        const voce = e.target.closest('.voce-indice');
+        if (!voce) return;
+        chiudi(false);
+        scegliFiltro(voce.dataset.filtro);
+      });
+      // Si chiude toccando fuori (il velo copre la pagina), con Esc o passando oltre con Tab
+      velo.addEventListener('click', () => chiudi(false));
+      document.addEventListener('click', e => { if (!e.target.closest('#indice, #btn-indice')) chiudi(false); });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && !pannello.hidden) { e.preventDefault(); chiudi(true); }
+      });
+      pannello.addEventListener('focusout', e => {
+        const verso = e.relatedTarget;
+        if (verso && !pannello.contains(verso) && verso !== pulsante) chiudi(false);
+      });
+    }
+
+    /* ---------- 5. Altri comandi della pagina ---------- */
+    function collegaEventi() {
+      // Etichetta della parte scelta, sotto il titolo: torna a tutto il menu
+      $('#filtro-attivo').addEventListener('click', () => scegliFiltro('tutti'));
+
+      // Link interni ("Vai al menu", logo, link diretti alle sezioni): scorrimento fluido e focus.
+      // Ctrl/Cmd/Maiusc + clic restano al browser (es. apri in una nuova scheda).
+      document.addEventListener('click', e => {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        const destinazione = elementoDaHash(link.getAttribute('href'));
+        if (!destinazione) return;
+        e.preventDefault();
+        vaiA(destinazione);
+      });
+
+      // Pulsante "Torna su": compare quando si risale la pagina o si arriva in fondo,
+      // così mentre si legge scorrendo verso il basso non copre i prezzi a destra
+      const su = $('#torna-su');
+      let ultimaY = window.scrollY;
+      let risalendo = false;
+      let inAttesa = false;
+      const aggiornaTornaSu = () => {
+        const y = window.scrollY;
+        if (Math.abs(y - ultimaY) > 6) { risalendo = y < ultimaY; ultimaY = y; }
+        const inFondo = y + window.innerHeight >= document.documentElement.scrollHeight - 80;
+        const mostra = y > window.innerHeight * 1.2 && (risalendo || inFondo || document.activeElement === su);
+        su.classList.toggle('visibile', mostra);
+        inAttesa = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (inAttesa) return;
+        inAttesa = true;
+        requestAnimationFrame(aggiornaTornaSu);
+      }, { passive: true });
+      aggiornaTornaSu();
+      su.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: comportamentoScroll() });
+        $('.marchio').focus({ preventScroll: true });
+      });
+
+    }
+
+    // Porta a una sezione (o a un altro elemento con id) e ci sposta il focus.
+    // "istantaneo": salto immediato, usato all'apertura di un link diretto.
+    function vaiA(destinazione, istantaneo) {
+      // Se la destinazione è nascosta perché nell'indice è scelta un'altra parte, mostra tutto il menu
+      if (destinazione.closest('[hidden]')) azzera();
+      requestAnimationFrame(() => {
+        destinazione.scrollIntoView({ behavior: istantaneo ? 'auto' : comportamentoScroll(), block: 'start' });
+        const fuoco = destinazione.matches('.sezione, .menu')
+          ? destinazione.querySelector('[tabindex="-1"]') || destinazione
+          : destinazione;
+        if (!fuoco.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT)$/.test(fuoco.tagName)) fuoco.setAttribute('tabindex', '-1');
+        fuoco.focus({ preventScroll: true });
+        if (destinazione.id) {
+          try { history.replaceState(null, '', '#' + encodeURIComponent(destinazione.id)); }
+          catch (e) { /* anteprime e riquadri isolati non permettono di cambiare l'indirizzo */ }
+        }
+      });
+    }
+
+    /* ---------- Schermata di benvenuto: scelta della lingua ---------- */
+    // La mostra lo script nel <head> (classe "mostra-benvenuto" su <html>), prima che la pagina compaia.
+    // Restituisce true se la schermata è aperta; "alTermine" viene chiamata quando sparisce.
+    function collegaBenvenuto(alTermine) {
+      const radice = document.documentElement;
+      const schermata = $('#benvenuto');
+      // Le lingue vengono da LINGUE, ognuna scritta nella sua lingua (come nel mappamondo)
+      $('#benvenuto-lingue').innerHTML = LINGUE.map(l =>
+        `<li><button type="button" class="benvenuto-lingua" data-lingua="${esc(l.codice)}" lang="${esc(l.codice)}">${esc(l.nome)}</button></li>`
+      ).join('');
+      if (!radice.classList.contains('mostra-benvenuto')) return false;
+
+      // Finché è aperta, il resto della pagina non si usa: né col dito né con la tastiera
+      const resto = Array.from(document.body.children).filter(el => el !== schermata && el.tagName !== 'SCRIPT');
+      resto.forEach(el => el.setAttribute('inert', ''));
+      let inChiusura = false;
+
+      function chiudi(codice) {
+        if (inChiusura) return;
+        inChiusura = true;
+        if (codice) impostaLingua(codice, true);   // il menu sotto è già tradotto quando la schermata sfuma
+        const tema = $('meta[name="theme-color"]');
+        if (tema && tema.dataset.colorePagina) tema.setAttribute('content', tema.dataset.colorePagina);
+        try { sessionStorage.setItem('marsal-benvenuto', 'fatto'); } catch (e) { /* memoria non disponibile */ }
+        const fine = () => {
+          radice.classList.remove('mostra-benvenuto');
+          schermata.classList.remove('in-uscita');
+          resto.forEach(el => el.removeAttribute('inert'));
+          alTermine();
+        };
+        if (movimentoRidotto.matches) { fine(); return; }
+        schermata.classList.add('in-uscita');      // breve dissolvenza (0,45 s nel CSS)
+        setTimeout(fine, 470);
+      }
+
+      schermata.addEventListener('click', e => {
+        const scelta = e.target.closest('[data-lingua]');
+        if (!scelta) return;
+        scelta.classList.add('scelta');
+        chiudi(scelta.dataset.lingua);
+      });
+      // Esc (da tastiera) chiude lasciando la lingua del telefono
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && radice.classList.contains('mostra-benvenuto')) chiudi(null);
+      });
+      // Niente focus automatico (farebbe sembrare già scelta la prima lingua): il resto della
+      // pagina è bloccato, quindi con la tastiera il primo Tab porta comunque alle lingue
+      return true;
+    }
+
+    /* ---------- 6. Lingue: traduzione dei testi fissi e menu del mappamondo ---------- */
+    function traduciTestiFissi() {
+      $$('[data-t]').forEach(el => {
+        if (!el.dataset.t) el.dataset.t = el.textContent.trim();     // ricorda il testo italiano
+        el.textContent = t(el.dataset.t);
+      });
+    }
+
+    function impostaLingua(codice, salva) {
+      if (!LINGUE.some(l => l.codice === codice)) codice = 'it';
+      lingua = codice;
+      document.documentElement.lang = codice;
+      traduciTestiFissi();
+      renderMenu();
+      applicaFiltri();
+      const scelta = LINGUE.find(l => l.codice === codice);
+      $('#lingua-codice').textContent = codice.toUpperCase();
+      $('#lingua-etichetta').textContent = t('Lingua: {l}', { l: scelta.nome });
+      $$('#menu-lingue [data-lingua]').forEach(b => b.setAttribute('aria-checked', String(b.dataset.lingua === codice)));
+      if (salva) { try { localStorage.setItem('marsal-lingua', codice); } catch (e) { /* memoria non disponibile */ } }
+    }
+
+    // Prima visita: lingua del telefono, se disponibile; poi la scelta salvata
+    function linguaIniziale() {
+      try {
+        const salvata = localStorage.getItem('marsal-lingua');
+        if (salvata && LINGUE.some(l => l.codice === salvata)) return salvata;
+      } catch (e) { /* memoria non disponibile */ }
+      const preferite = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'it'];
+      for (const p of preferite) {
+        const codice = String(p).slice(0, 2).toLowerCase();
+        if (LINGUE.some(l => l.codice === codice)) return codice;
+      }
+      return 'it';
+    }
+
+    function collegaMenuLingue() {
+      const pulsante = $('#btn-lingua');
+      const menu = $('#menu-lingue');
+      menu.innerHTML = LINGUE.map(l => `
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-lingua="${esc(l.codice)}" lang="${esc(l.codice)}">
+          <span class="lingua-sigla" aria-hidden="true">${esc(l.codice.toUpperCase())}</span>${esc(l.nome)}
+        </button></li>`).join('');
+      const vociMenu = () => $$('button', menu);
+
+      function apri() {
+        menu.hidden = false;
+        pulsante.setAttribute('aria-expanded', 'true');
+        (vociMenu().find(b => b.getAttribute('aria-checked') === 'true') || vociMenu()[0]).focus();
+      }
+      function chiudi(riportaFuoco) {
+        if (menu.hidden) return;
+        menu.hidden = true;
+        pulsante.setAttribute('aria-expanded', 'false');
+        if (riportaFuoco) pulsante.focus();
+      }
+
+      pulsante.addEventListener('click', () => (menu.hidden ? apri() : chiudi(true)));
+      menu.addEventListener('click', e => {
+        const b = e.target.closest('[data-lingua]');
+        if (!b) return;
+        impostaLingua(b.dataset.lingua, true);
+        chiudi(true);
+      });
+      menu.addEventListener('keydown', e => {
+        const elenco = vociMenu();
+        const i = elenco.indexOf(document.activeElement);
+        if (e.key === 'ArrowDown') { e.preventDefault(); elenco[(i + 1) % elenco.length].focus(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); elenco[(i - 1 + elenco.length) % elenco.length].focus(); }
+        else if (e.key === 'Home') { e.preventDefault(); elenco[0].focus(); }
+        else if (e.key === 'End') { e.preventDefault(); elenco[elenco.length - 1].focus(); }
+        else if (e.key === 'Escape') { e.preventDefault(); chiudi(true); }
+        else if (e.key === 'Tab') chiudi(false);
+      });
+      // "pointerdown" funziona anche su iPhone, dove i tocchi su zone non cliccabili non generano "click"
+      document.addEventListener('pointerdown', e => { if (!e.target.closest('.lingue')) chiudi(false); });
+    }
+
+    /* ---------- 7. Altezza della testata (per ancore precise) ---------- */
+    function misuraAltezze() {
+      document.documentElement.style.setProperty('--h-testata', $('#testata').offsetHeight + 'px');
+    }
+
+    /* ---------- 8. Dati strutturati per Google (schema.org) ---------- */
+    function datiStrutturati() {
+      const ind = CONFIG.indirizzo || {};
+      const pagina = location.href.split(/[?#]/)[0]; // indirizzo della pagina senza parametri né #
+      const dati = {
+        '@context': 'https://schema.org',
+        '@type': 'BarOrPub',
+        name: CONFIG.nome,
+        url: pagina,
+        hasMenu: pagina + '#menu',
+        servesCuisine: CONFIG.offerta,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: ind.via, postalCode: ind.cap,
+          addressLocality: ind.citta, addressRegion: ind.provincia, addressCountry: 'IT'
+        }
+      };
+      const s = document.createElement('script');
+      s.type = 'application/ld+json';
+      s.textContent = JSON.stringify(dati);
+      document.head.appendChild(s);
+    }
+
+    /* ---------- 9. Icona della scheda del browser creata dal logo ---------- */
+    function impostaFavicon() {
+      const tracciato = $('#i-logo path');
+      const link = $('link[rel="icon"]');
+      if (!tracciato || !link) return;
+      // stesso blu della pagina (variabile --testo del CSS)
+      const blu = getComputedStyle(document.documentElement).getPropertyValue('--testo').trim() || '#062A74';
+      const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -250 910 910">' +
+        `<rect x="-40" y="-250" width="910" height="910" rx="180" fill="${blu}"/>` +
+        `<path d="${tracciato.getAttribute('d')}" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round"/></svg>`;
+      link.href = 'data:image/svg+xml,' + encodeURIComponent(svg);
+    }
+
+    /* ---------- Avvio ---------- */
+    applicaConfig();
+    collegaMenuLingue();
+    impostaLingua(linguaIniziale(), false);   // disegna il menu nella lingua del telefono (o in quella salvata)
+
+    // Link diretto a una sezione (es. index.html#aperitivi): salto immediato,
+    // dopo la scelta della lingua se c'è la schermata di benvenuto
+    const hashIniziale = location.hash;
+    const vaiAllInizio = () => {
+      const destinazione = elementoDaHash(hashIniziale);
+      if (destinazione) vaiA(destinazione, true);
+      else $('#titolo-menu').focus({ preventScroll: true });
+    };
+    const conBenvenuto = collegaBenvenuto(vaiAllInizio);
+    if (!conBenvenuto && elementoDaHash(hashIniziale)) setTimeout(vaiAllInizio, 0);
+
+    collegaIndice();
+    collegaEventi();
+    datiStrutturati();
+    impostaFavicon();
+
+    misuraAltezze();
+    if ('ResizeObserver' in window) new ResizeObserver(misuraAltezze).observe($('#testata'));
+    else window.addEventListener('resize', misuraAltezze);
+  })();
+  </script>
+</body>
+</html>
